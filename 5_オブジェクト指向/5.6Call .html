@@ -1,0 +1,75 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.6 call </title>
+</head>
+<body>
+<!-- 2020/05/01-->
+<h4>文脈によって中身が変化する変数 -thisキーワード-</h4>
+
+<p>先ほど、thisキーワードはコンストラクターによって生成されるインスタンスを表すと述べましたが、<br>
+    厳密には「コンストラクターという文脈では」という条件が頭に付きます。
+</p>
+
+<h4>call / applyメソッドの構文</h4>
+<p>
+    func.call(thst [,arg1 [,arg2 [,...]]])
+    funcapply(that [,args])
+        func:関数オブジェクト       that : 関数の中でthisキーワードが示すもの
+        arg1、arg2... :関数に渡す引数 args:関数に渡す引数（配列）
+</p>
+
+<script>
+    var data = 'Global data';
+    var obj1 = { data: 'obj1 data'};
+    var obj2 = { data: 'obj2 data'};
+
+    function hoge(){
+        console.log(this.data);
+    }
+    hoge.call(null); //結果：　Global data
+    hoge.call(obj1); //結果： obj1 data
+    hoge.call(obj2); //結果： obj2 data
+</script>
+
+<script>
+    function hoge(){
+        var args = Array.prototype.slice.call(arguments);
+        console.log(args.join('/'));
+    }
+    hoge('Angular' , 'react','Backhone');
+    //結果：Anugular / React / backhone
+</script>
+
+<h4>5.1.6 コンストラクターの強制的な呼び出し</h4>
+
+<p>JavaScriptの世界では、関数がコンストラクターとしての役割をになっていることから、問題もあります。<br>
+というのも、構文上は。、コンストラクターを関数としても呼び出せてしまうのです。</p>
+
+
+<script>
+    var Member = function(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    var m = Member('権兵衛' , '佐藤');
+    console.log(m);
+    console.log(firstName);
+    console.log(m.firstName);
+</script>
+
+<script>
+    var Member = function(firstName, lastName){
+    if(!(this instanceof Member)){
+        return new Member(firstName, lastName);
+    }
+    this.firstName = firstName;
+    ... 中略 ...
+    };
+
+</script>
+
+
+</body>
+</html>

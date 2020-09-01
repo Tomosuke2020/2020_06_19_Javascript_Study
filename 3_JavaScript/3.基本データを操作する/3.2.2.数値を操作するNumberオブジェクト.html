@@ -1,0 +1,85 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.2.2数値を操作する -Numberオブジェクト-</title>
+</head>
+<body>
+<!-- 2020/04/13 -->
+<h4>Numberオブジェクトは数値型（Number）の値を扱うためのラッパーオブジェクトで、数値を整形するための機能を提供すると共に、<br>
+数値を整形するための機能を提供すると共に、無限大／無限小、数値型
+の最大値／最小値など、特別な値を表すための読み取り専用プロパティ（定数）を公開しています。<br>
+</h4>
+
+<h4>Numberオブジェクトの定数list3-08</h4>
+<script>
+    console.log(Number.NaN === Number.NaN);
+    //結果：false
+</script>
+
+<script>
+    console.log(Number.MAX_SAFE_INTEGER);//結果：9007199254740991
+    console.log(Number.MAX_SAFE_INTEGER + 1);//結果：9007199254740992
+    console.log(Number.MAX_SAFE_INTEGER + 2);//結果：9007199254740992（不正）
+</script>
+
+<h4>
+    数値形式を変換するtoXxxxxメソッド
+</h4>
+
+<script>
+var num1 = 255;
+console.log(num1.toString(16));
+console.log(num1.toString(8));
+
+var num2 = 123.45678;
+
+console.log(num2.toExponential(2));
+console.log(num2.toFixed(3));
+console.log(num2.toFixed(7));
+console.log(num2.toPrecision(10));
+console.log(num2.toPrecision(6));
+</script>
+
+<h4>文字列を数値に変換する</h4>
+<p>2.3節でも触れたように、JavaScriptはデータ型に寛容な言語で、その時々の文脈や演算子によって、操作対象の値を適切なデータ方に自動的に変換してくれます。</p>
+
+<script>
+var n = '123xxx';
+console.log(Number(n));
+console.log(Number.parseFloat(n));
+console.log(Number.parseInt(n));
+
+var d = new Date();
+
+console.log(Number(d));
+console.log(Number.parseFloat(d));
+console.log(Number.parseInt(d));
+
+var h = '0x10';
+console.log(Number(h));
+console.log(Number.parseFloat(h));
+console.log(Number.parseInt(h));
+
+var e = '1.01e+2';
+
+console.log(Number(e));
+console.log(Number.parseFloat(e));
+console.log(Number.parseInt(e));
+
+</script>
+
+<h4>算術演算子による文字列</h4>
+
+<script>
+console.log(typeof(123 + '')); //結果：string
+console.log(typeof('123' - 0)); //結果：number
+</script>
+
+ <h4>論理型への変換</h4>
+<script>
+var num =123;
+console.log(!!num);//結果：true
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html lang="ja">
+<head>
+    <title>7.1.3タイマー機能を実装する -setinterval/setTimeoutメソッド</title>
+    </head>
+<body>
+    
+    <p>「一定時間ごとに、あるいは一定時間が経過したあとのになんらかの処理を行いたい」というケースはよくあります。<br>
+    このような場合に利用できるのがsetinterval／setTimeoutメソッドです。<br>
+    まずは具体例を見てみましょう。<br>
+    </p>
+    <!-- ボタンクリック時にタイマー処理を中止 -->
+    <input id = "btn" type="button" value = "タイマー停止" />
+    <div id = "result"></div>
+    <style>
+        #result{
+            color:brown;
+            width:200px;
+            height:200px;
+        }
+        </style>
+
+        <h4>時刻をつかさどるsetInterval/setTimeoutメソッドの構文</h4>
+        <p>変数宣言 : window.setInterval(func, dur)<br>
+           window.setTimeout(func,dur)
+           func:実行される処理      dur:時間間隔（単位はミリ秒）
+        </p>
+
+        <h4>気をつけること</h4>
+        <p>・引数funcを使わない<br></p>
+        <p>・指定された時間で実行されるわけではない<br></p>
+        <p>・引数durがゼロの場合</p>
+        <p>うまくいかないことがあるので気をつけましょう。</p>
+    <script src="JS/7-1-3.js"></script>
+</body>
+</html>

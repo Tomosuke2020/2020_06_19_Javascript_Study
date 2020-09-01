@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+
+</head>
+
+<body>
+    <h2>
+        検証ツールで表示する。
+    </h2>
+    <h4>var変数宣言で数値を出す練習
+    </h4>
+
+<script>
+var price =100 ;
+//var変数を宣言し、Priceという箱の中に100を入れた。
+console.log(price * 1.08);//結果:108
+</script>
+
+<h4>2.2.1 let変数宣言で重複を許可しない瞬間</h4>
+
+<script>
+    let msg = "ほげほげ";
+    let msg = "ふぅばぁ";
+    let msg = "ほげほげ";
+</script>
+<!-- シンタックスエラー・let変数を二度重複して実行していると表示される。 -->
+
+<h4>2.2.2 const「定数（値が動かない）」宣言で
+    全ての定数の値を固定することができる。</h4>
+
+<script>
+    //const定数宣言をしてTaxという名前をつける
+    const TAX = 1.08;
+    
+    var price = 100;
+    console.log(price * TAX);
+</script>
+
+<h4>2.2.3 データ型：変数の値の変更</h4>
+<script>
+    //xにこんにちはを入れた
+    var x ='こんにちは。Javascript';
+    //xを100に変換した
+    x = 100;
+</script>
+
+<h4>2.3.2 文字リテラル
+    データ型に格納できる値そのもの
+    </h4>
+
+<h4>
+    2.3.2文字リテラルを利用した改行。
+</h4>
+
+<script>
+    var kaigyou ='ラーメンのある（改行）\n町中華'
+    console.log(kaigyou);
+</script>
+
+<h4>【よく使うこと】Windowアラートで読み込んだ後に表示する。</h4>
+<script>
+    //window.alertで読み込んだ瞬間に表示する。
+    window.alert('こんにちはJavaScript！\n頑張って勉強しましょうね。');
+    // 「\n」で改行。
+</script>
+
+<h4>2.3.2 テンプレート文字列</h4>
+<h4>鈴木さんの名前を呼んでいるはず。</h4>
+<script>
+'use strict';
+
+let name ='鈴木';
+let str =`こんにちは、${name}さん。\n
+今日もいい天気ですね！`;
+console.log(str);
+</script>
+
+<h4>2.3.2配列リテラル<br>
+    配列とは、データの集合体のようなものです。
+
+    ここまでに扱った変数が1つの変数の（入れ物）に対して、<br>
+    一つの値を持つものばかりであったのに対し、<br>
+    配列では一つの変数に対して複数の値を格納できます。
+    </h4>
+
+    <h4>2.3.2 配列リテラルを用いて、Javascriptの要素を取得しているはず。</h4>
+    <script>
+        console.log('この中でのお茶');
+        var data = ['tea', 'sandwich' , 'Beer'];
+        console.log(data[0]) //結果：一番目の要素を取得
+</script>
+
+<script>
+        console.log('この中で麦を使ったもの');
+        var hairetsu = ['tea',['rice','Pasta'],'Coffee'];
+        console.log(hairetsu[1][1]);
+        //取得2と3の要素を取得。
+    </script>
+
+<h4>オブジェクトリテラル。
+    名前を指定してアクセスできる配列
+    </h4>
+
+<script>
+    var obj = { x:'リンゴ', y:'バナナ', z:'スイカ'};
+    console.log(obj.x); //結果：リンゴ
+    console.log(obj['y']); //結果：バナナ
+</script>
+
+<h4>関数リテラル
+    ※関数とは何かしらの入力の値（引数）を与えることによって、
+    決められた処理を行う箱のようなもの。
+    処理後の値を「戻り値」と呼ぶ。
+    「入出力の窓口を持った処理のかたまり」というイメージ
+</h4>
+
+<h4>
+    未定義値（undefined）
+     ある変数の値が定義されていないことを表す値で、
+    以下のことで返されます。
+
+    ・ある変数が宣言済みであるものの値が与えられていない。
+    ・未定義のプロパティを参照しようとした。
+    ・関数で値が返されなかった
+
+    undefindと表示される。
+</h4>
+
+<script>
+    var x;
+    var obj = { a:12345};
+    console.log(x); //結果：undefined（値が設定されていない）
+    console.log(obj.b); //結果：undefind（プロパティが存在しない）
+</script>
+
+<h4>
+    ヌル（null）
+    Javascriptはもう一つ、
+    該当する値がないことを意味するnull（ヌルが）
+</h4>
+
+<h4>
+    2.4演算子
+    演算子（オペレーター）とは与えられた変数/リテラルに対して、
+    予め決められた何らかの処理をお行うための記号です。
+    例えば、これまでに登場した「=」や「,」「-」などは全て演算子です。
+</h4>
+
+<script>
+    //Javascriptで足し算
+    console.log( 10 + 1 );
+    console.log('10' + 1);
+    
+   //Javascriptで今日の日付を出す
+
+   //todayと名前をつけた箱に今日の日付()
+    var today = new Date();
+
+    //出力に数値で本日を出力
+    console.log(1234 + today);
+</script>
+
+<h4>
+インクリメント演算子（++）どデクリメント演算子（--）
+インクリメント／デクリメント演算子は、
+オペラントに対して1を加算／減産します。
+</h4>
+
+<script>
+    var x = 3;
+    var y = x++;
+    console.log(x); //結果：4
+    console.log(y); //結果：3
+
+    var x = 3;
+    var y = ++x;
+    console.log(x); //結果：4
+    console.log(y); //結果：4
+</script>
+
+<h4>
+     小数点を含む計算には要注意
+    Javascriptは二進数で進んでいる。
+</h4>
+
+<script>
+    //本来の結果は0.6
+    console.log(0.2 * 3); //結果：0.600000000000001
+</script>
+
+<h4>
+    二進数なので、本当の値を出しても不満を持つ
+</h4>
+
+<script>
+    //「 === 」は等しいに当たる
+    console.log(0.2 * 3 === 0.6); //結果：falese（偽）
+</script>
+
+<h4>
+    そのため小数点といった計算で厳密に結果を得る必要がある場合、
+    値の比較を行う場合には以下のようにすることで、意図した結果を得られます。
+</h4>
+
+<script>
+    console.log(((0.2 * 10)* 3) /10); //結果：0.6
+</script>
+
+<h4>比較する場合も同じです。</h4>
+
+<script>
+    console.log((0.2 * 10) * 3 === 0.6 * 10); //結果：true
+</script>
+
+<h4>
+    値を何倍するのかは、有効桁数によって決めます。
+    例えば、0.2351という召集で小数点以下2桁まで保証したいならば、以下のようにしてください。
+
+    1.100倍して23.51としたものを演算する
+    2.最終的な結果wを小数点以下で四捨五入する
+    3.2の結果を100で除算して、再び小数点に戻す。
+</h4>
+
+<h4>2.4.2 代入演算子
+    指定された変数に値を設定（代入）するための演算子です。
+    先述した「=」演算子は、代表的な代入演算子です。
+    これには、算術演算子やビット演算子と連動した機能を提供する複合代入
+    演算子も含まれます。
+    「=」値の代入：イコール
+    「>>=」左辺の値を右辺の値だけ右にシフトした結果を代入
+</h4>
+
+<h4> x  ●=  y ⇄ x ● y </h4>
+
+
+<h4>基本型と参照型による代入の違い「=」演算子
+</h4>
+
+<script>
+    var x = 1;
+    var y = x;
+    x = 2;
+    console.log(y); //結果：1
+
+    var data1 = [0, 1, 2];
+    var data2 = data1;
+    data1[0] = 5;
+    console.log(data2); //結果：[5, 1 , 2]
+</script>
+
+<p>
+    Note:変数の正体
+    値を格納するのは、正確にはコンピュータ上に用意されたメモリの役割です。
+    メモリにはそれぞれの場所を表す番号（アドレス）が振られています。
+    スクリプトに意味のない番号を記述するのでは、
+    見た目にもわかりにくく、タイプミスの原因になります。
+    そこでアドレスに対して、人間がわかりやすいように名前をつけておく、
+    それが変数の正体です。
+    変数とは、「値の格納先（アドレス）」に対してつけられた名札」と言えます。
+</p>
+
+
+<h4>定数は「再代入できない」</h4>
+<script>
+const TAX = 1.08;
+TAX = 1.1; //エラー：宣言されていますと表示される
+</script>
+
+<h4>定数は読み込み専用ではなく、変更はできるが、再代入できない</h4>
+
+<script>
+const data = [1, 2, 3]; //エラー：再代入しないでと表示される
+</script>
+
+<h4>
+    定数は再代入できない変数
+    定数は変更的できない値として扱えることになります。
+</h4>
+
+<h4>
+分割代入（配列）
+</h4>
+
+<p>
+    分割代入（destruvturing assignment）とは、配列／オブジェクトを分解し、配下の要素
+    プロパティ値を個々の変数に分解するための構文です。
+    例えば、従来であれば、配列から値を取り出すためには、
+    以下のように個々の要素にアクセスしなければなりませんでした。
+</p>
+
+<script>
+    var vdata = {56, 40, 26, 82, 19, 17, 73, 99};
+    var x0 = vdata[0];
+    var x1 = vdata[1];
+    var x2 = vdata[2]; 
+    //...  要素の個数だけ列挙 ...
+</script>
+
+<p>これらを省略することができます。</p>
+
+<script>
+    let data = {56, 40, 26, 82, 19, 17, 73, 99};
+    let {x0, x1, x2, x3, x4, x5, x6, x7} = data
+    console.log(x0);    //結果：56
+    console.log(x7);    //結果：99
+</script>
+
+
+<script>
+    let bdata = {56, 40, 26, 82, 19, 17, 73, 99};
+    let {x0, x1, x2, ...other} = bdata
+
+    console.log(x0);    //結果：56
+    console.log(x1);    //結果：40
+    console.log(x2);    //結果：26
+    console.log(other); //結果：[82, 19, 17, 73,99]
+</script>
+
+    <h4>分割代入（オブジェクト）
+        同じオブジェクトのプロパティを変数に分解することもできます。
+        オブジェクトの場合は、代入先の変数も{...}で括ります。
+    </h4>
+
+    <!-- 
+    <script>
+    let book = { title: 'Javaポケットリファレンス', publish: '技術評論社' , kakaku:2680 };
+    let {kakaku, title, memo = 'なし'} = book;
+    console.log(title); //結果：
+    console.log(kakaku); //結果：
+    console.log(memo);  //結果：
+    </script>
+    -->
+
+    <h4>（1）入れ子になったオブジェクトを分解する</h4>
+    <p>入れ子になったオブジェクトを展開するには
+        オブジェクトの入れ子関係がわかるように、
+        代入先の変数で{...}入れ子構造で表します。</p>
+
+    <script>
+    let book = { title: 'Javascriptポケットリファレンス' , publish: '技術評論社' , price: 2680,
+    other: { keywd : 'Java SE 8' , logo:'logo.jpg' }};
+        let { title, other, other:{ keywd} } = book;
+    
+    console.log(title);
+    console.log(other);
+    console.log(keywd);
+</script>
+
+    <h4>（2）変数の別名を指定する</h4>
+    <p>「変数名：別名」の形式で、
+        プロパティとは異なる名前の変数に値を割り当てることもできます。
+        それではtitle／publishプロパティをそれぞれ変数name／companyに代入します。
+    </p>
+ 
+    <script>
+    let book = { title:'Javaポケットリファレンス', publish: '技術評論社' };
+    let {
+        title: name, publish:company } = book;
+    }
+
+    console.log(name);  //結果：
+    console.log(company); //結果：
+    </script>
+
+</body>
+</html>

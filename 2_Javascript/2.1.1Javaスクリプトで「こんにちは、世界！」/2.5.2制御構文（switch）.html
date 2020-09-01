@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<title>2.5.2制御構文</title>
+</head>
+
+<body>
+    <!-- date 2020/04/06-->
+<h4>2.5.2 式の値によって処理を分岐する -switch命令- list2-43</h4>
+<p>if命令を利用することで、シンプルな分岐から複雑な多岐分岐までを柔軟に表現できます。
+    しかし、以下はどうでしょうか
+</p>
+
+<script>
+    //比較if文で書かれた式の値の処理の分岐
+    var rank = 'b';
+    if (rank === 'A'){
+        console.log('Aランクです。');
+    }else if(rank === 'B'){
+        console.log('Bランクです。');
+    }else if(rank === 'C'){
+        consol.log('Cランクです。');
+    }else{
+        console.log('ランク外です。');
+    }
+</script>
+
+<p>
+switch（式）{<br>
+    case 値1: <br>
+    「式 = 値1」である場合に実行される命令（群）<br>
+    cases 値2 :<br>
+    「式 = 値2」である場合に実行される命令（群）<br>
+    default:<br>
+    式の値が全ての値に合致しない場合に実行される命令（群）<br>
+}<br>
+</p>
+
+<h4>switch文</h4>
+<script>
+    var rank ='B';
+    switch(rank){
+        case'A':
+        consple.log('Aランクです。');
+        break;
+
+        case 'B':console.log('Bランクです。');
+        break;
+
+        default:
+        case'C':console.log('Cランクです。');
+        console.log('ランク外です。');
+        break;
+    }//結果：Bランクです。
+</script>
+
+<h4>意図したbreak命令の省略 list2-45</h4>
+<p>
+    意図的にbreak命令を略記して、<br>
+    複数のブロックを続けて実行する（フォールスルー）<br>
+    という書き方もできるのですが、<br>
+    コードの流れがわかりにくくなる原因ともなります。<br>
+    <br>
+    通常は避け、<br>
+    例外として以下のケースでは複数のブロックを続けて記述しても構いません。
+</p>
+
+<script>
+    var rank ='B'; //rank変数にBを名付ける
+    
+    //switchを呼び出し
+    switch(rank){
+        //switch！rankはどれか？
+        case 'A':
+        case 'B':
+        case 'C':
+        console.log('合格！');
+
+        break;
+
+        case 'D':
+        console.log('不合格...');
+        break;
+    }//結果：合格！
+</script>
+
+<h5>
+    不合格になる場合
+</h5>
+<script>
+    
+    var rank='D';
+
+    switch(rank){
+        case 'A':
+        case 'B':
+        case 'C':
+        console.log('合格！');
+
+        break;
+
+//switch文は:を間違えないように
+        case 'D':
+        console.log('不合格...');
+        break;
+    }
+</script>
+
+<script>
+    
+    //*1
+    var rank='F';
+
+    switch(rank){
+        case 'A':
+        case 'B':
+        case 'C':
+        console.log('合格！');
+
+        break;
+
+//*1定義した値を間違えると無視される。
+        case 'D':
+        console.log('不合格...');
+        break;
+    }
+</script>
+
+<h4>注意：switch式とcase値は「===」演算子 list 2-46</h4>
+
+<script>
+    var x ='0';
+    switch(x){
+        case 0 :
+        //この部分は実行されない
+        consol.log('くそ');
+    }
+</script>
+
+<h4>条件式によってループ制御する -while/do...while命令- </h4>
+
+
+<h4>
+    2.5.3 条件式によってループを制御する -while/do...while命令--
+</h4>
+<p>
+    条件分岐と並んで、よく利用するのが繰り返し処理（反復処理）です。<br>
+    繰り返し処理には、for、for...in/for...of、while/do...while命令などよく似た命令がいくつか存在します。<br>
+    ここの構文だけでなく、それぞれの違いを理解するようにしてください。<br>
+</p>
+
+<h4>構文 while命令-</h4>
+
+<p>
+    while(条件式){
+        条件式がtrueである時に実行される命令（群）
+    }
+</p>
+
+<h4>構文 do...while命令</h4>
+
+<p>
+    do{
+        条件式がtrueである時に実行される命令（群）
+    }while:（条件式）;
+</p>
+
+<h4>while命令を使用したコード list 2-47</h4>
+<script>
+    //xを8と定義する
+    var x = 8;
+
+    //while発動xが10より小さい場合
+    while(x < 10)
+    //ブラケットを忘れない
+    {
+        //xの値は1つずつ小さくなる
+        console.log('xの値は' + x);
+        x++;
+    }//結果：「xの値は8」「xの値は9」を順に出力
+</script>
+
+<p>
+    while命令は前置判断です。<br>
+    ループの最初で条件式を判定します
+</p>
+
+<h4>do while命令を使用したコード list 2-48</h4>
+
+<script>
+    //xを8と定義する
+    var x = 8;
+
+    //while発動xが10より小さい場合
+    //do whileは先に条件式を宣言する
+    do{
+        console.log('xの値は'+ x);
+        x++;
+    }
+    while(x < 10);
+    //結果
+</script>
+
+    <p>do while命令は後置判断です。
+        ループの最後で条件式を判定します。
+    </p>
+
+    <h4>無限ループ</h4>
+    <p>永遠に終了しない（＝終了条件がtrueにならない）ループのことを無限ループと呼びます。
+        わざとする場合もありますが、テクニックとして覚えておき、きちんと出口を用意しておきましょう。
+    </p>
+    
+    <script>
+        var x = 8;
+        while(x < 8){
+        }
+        console.log('xの値は'+ x);
+        //x++;
+    </script>
+    <!-- date2020/04/07-->
+</body>
+</html>

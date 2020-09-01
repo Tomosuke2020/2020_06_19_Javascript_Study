@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>外部のスタイルシートを適用する -ClassName-プロパティ</title>
+        <link rel = 'stylesheet' href="css/style.css" />
+    </head>
+    <body>
+
+    <h4>外部のスタイルシートを適用するclassNameプロパティ</h4>
+    
+    <p>styleプロパティによるスタイルの設定は、<br>
+    「シンプルに記述できる」という意味では便利ですが、<br>
+    問題もあります。<br>
+
+    スタイルの定義がスクリプトと混在してしまうため、<br>
+    デザインの変更などに対応しにくいのです。
+</p>
+    <h4>ClassNameプロパティの構文</h4>
+    <p>elem.className [= clazz]
+        elem:要素オブジェクト clazz:スタイルクラス
+    </p>
+
+    <div style="color:red;">赤い文字です。</div>
+
+    <p>一つの要素に一つの記述です。</p>
+    <div id = 'action'>
+    多分赤くなります。
+    </div>
+
+    <p>そして、JavaScript上ではイベント発生では<br>
+        ・background-colorがbackgroudColor<br>
+        ・border-top-styleがborderTopStyle<br>
+    です。<br>
+    ただし、floatプロパティ（CSS）だけは例外で、styleFloatとなる点に注意してください。
+    </p>
+    <div id="list"></div>
+        <script src="js/6-6.1.js"></script>
+        <style></style>
+    </body>
+</html>

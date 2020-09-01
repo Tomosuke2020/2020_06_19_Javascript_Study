@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+    <title>6.7イベントリスナー／イベントハンドラーを削除する
+    </title>
+    <link rel="stylesheet" href="css/style6-40.css">
+    </head>
+    
+    <body>
+    <h4>6.41リスナーリムーブ</h4>
+    <h4>removeEventListenerメソッド</h4>
+    
+    <p>構文<br></p>
+    <p>elem.removeEventListener(type, listener, capture)<br>
+    elem:要素オブジェクト   type：イベントの種類  listener:削除するイベントリスナー<br>
+    capture:イベントの伝たつ方向（6.7.3項。デフォルトはfalse）
+    </p>
+
+    <form>
+        <input id = "btn"  type="button" value="ダイアログ表示" />
+    </form>
+    
+    <div id="list"></div>
+        <script src="js/6-40.js"></script>
+        <style></style>
+    </body>
+</html>

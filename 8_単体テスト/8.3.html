@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>8.3 ビルドツールで定型作業を自動化する -Grunt-</title>
+<link rel="stylesheet" href="style/8-0.css">
+</head>
+
+<h4>ビルドツールで定型作業を自動化する -Grunt-</h4>
+
+<p>JavaScriptはインタプリタ型の言語であることから、<br>
+    元来、コンパイル不要で、ソースコードを配置するだけでそのまま動作する手軽さが特長でした。<br>
+    しかし、近年では、JavaScriptによる開発も複雑になってきます。<br>
+    例えば、JavaScriptのコードを動作するには、以下のような作業が伴います。<br>
+</p>
+
+<br>
+<br>
+<br>
+
+<p>
+    ・altJSを利用している場合には、そのコンパイル<br>
+    ・単体テストの実施<br>
+    ・JSLint<a href="http://www.jslint.com/">（http://www.jslint.com/）</a>による「べからず」なコードのチェック<br>
+    ・ソースコードの圧縮（ミニフィケーション）<br>
+</p>
+
+<p>
+    これらの作業の一つ一つは、もちろん難しいものではありません。<br>
+    しかし、開発の途中で人が作業を自動化するのが、ビルドツールであるGruntです。（タスクランナーともいいます。）<br>
+    他の言語で開発したことがある方であれば、「Ant/Maven（Java）、Makeのようなもの」といえば、イメージしやすいかもしれません。<br>
+    JavaScriptでも、類似のツールとしてGulp<a href="http://gulpjs.com/">http://gulpsjs.com</a>があります。<br>
+</p>
+
+<h4>Gruntによるソースコードの圧縮</h4>
+<p>本節では、あらかじめ用意されたソースコードを圧縮する手順を通じて、<br>
+    Gruntの基本的な用法を解説します。<br>
+    なお以下の手順を実行するにはあらかじめNode.jsをインストールしておく必要があります。</p>
+<br>
+<br>
+<br>
+<h4>ソースコードの圧縮</h4>
+<p>
+    ブラウザ上で動作するJavaScriptは、<br>
+    スクリプトコードをいったんクライアント側にダウンロードしてから実行する必要があります。<br>
+    このため、コードのサイズが大きくなると、ダウンロードに時間がかかり、<br>
+    結果としてアプリ全体のパフォーマンスを劣化させる原因ともなります。<br>
+
+    そこで、実装環境では、JavaScriptのコードから余計なコメント／空白／改行を取り除き、コードサイズをできるだけ小さくすることが行われます。<br>
+    これをコードの圧縮（ミニフィケーション）と呼びます。
+</p>
+
+<h4>Gruntfileを準備する</h4>
+
+<script type="text/javascript" src="js/8-7.js" /></script>
+
+    <p>Gruntfileとは、ロードすべきGruntプラグインやGruntに実行させるべきタスクを定義するためのファイルです。<br>
+    package.jsonと同じフォルダーを設置し、ファイル名はGruntfile.jsとします。<br>
+    </p>
+
+
+<h4>パッケージの条件を作る</h4>
+<p>以下の条件を作り、パッケージの条件を作ります。<br>    
+    ・/node_moduleフォルダーの配下に/gruntフォルダー、/grunt-contrib-uglifyフォルダができていること<br>
+    ・Package.jsonに、devDependenciesブロックが追加されている。<br>
+    <br>
+    {   <br>
+        ...中略<br>
+            "license" : "ISC"<br>
+            "devDependencies" : {                   <br>
+                "grunt" : "^1.0.1",                 <br>
+                "grunt-control-uglity" : "^1.0.1"   <br>
+            }
+    }
+</body>
+
+</html>

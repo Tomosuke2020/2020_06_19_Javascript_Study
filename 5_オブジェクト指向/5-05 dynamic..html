@@ -1,0 +1,45 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.5 dynamic2.js</title>
+</head>
+
+<body>
+<!-- 2020/05/07 -->
+
+<h4>動的にメソッドを追加する</h4>
+
+<script>
+    var member = function(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    };
+
+    var mem = new Member('太郎','山田');
+    mem.getName = function(){
+        return this.lastName + '' + this.firstName;
+    }
+
+console.log(mem.getName());
+</script>
+
+<h4>気を付けたい動的メソッド</h4>
+
+<script>
+    var Member = function(firstName , lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    };
+
+    var mem = new Member('太郎' , '山田');
+    mem.getName = function(){
+        return this.lastName + ' ' + this.firstName;
+    }
+    console.log(mem.getName());
+
+    var mem2 = new Member('奈々美' , '赤谷');
+    console.log(mem.getName());
+</script>
+
+</body>
+</html>

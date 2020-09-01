@@ -1,0 +1,37 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.7JavaScriptプログラムでよく利用する機能を提供する 
+    -Globalオブジェクト-</title>
+</head>
+<body>
+<!-- 2020/04/17 -->
+<script src="js/object-grobal.js" defer></script>
+
+<h4>3.7Globalオブジェクト</h4>
+<p>globalオブジェクトは<br>
+    var g = new Globalのようにインスタンス化することはできません。
+<br>
+    Global.メソッド名（...）;<br>
+のように配下メンバを呼び出せることはできません。<br>
+</p>
+
+<p>
+プログラミングを行う上で重要な（また、よく使用する機能）が含まれています。<br>
+以下でそれぞれをみていきましょう。</p>
+
+
+<h4>
+    Numberオブジェクトに移動したメソッド
+</h4>
+
+<script>
+console.log(isNaN('hoge')); //結果：true
+console.log(Number.isNaN('hoge')); //結果：false
+</script>
+<p>
+    クエリもこれらを用いられている。
+</p>
+<!-- 2020/04/17 -->
+</body>
+</html>

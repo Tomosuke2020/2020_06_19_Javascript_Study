@@ -1,0 +1,55 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.3.2 継承関係は動的に変更可能</title>
+</head>
+<body>
+
+
+<script>
+    var Animal = function(){};
+    
+    Animal.prototype = {
+        walk : function(){
+        console.log('トコトコ...');
+        }
+    };
+
+    var SuperAnimal = function(){};
+    SuperAnimal.prototype = {
+        walk : function(){
+            console.log('ダダダダダ！');
+        }
+    };
+
+    var Dog = function(){};
+    Dog.prototype = new Animal();
+    var d1 = new Dog();
+    d1.walk(); //結果：トコトコ...
+
+    Dog.prototype = new SuperAnimal();
+    var d2 = new Dog();
+    d2.walk();  //結果：ダダダダダ！
+    d1.walk();  //結果：？？？？
+</script>
+
+<h4>5.3.3 オブジェクトの型を判定する</h4>
+<script>
+    //Animalクラスと、これを継承したHamsterクラスを準備
+
+    var Animal = function(){};
+    var Hamster = function(){};
+
+    Hamster.prototype = new Animal();
+
+    var a = new Animal();
+    var h = new Hamster();
+
+    console.log(a.constructor === Animal);
+    console.log(h.constructor === Animal);
+    console.log(h.constructor === Hmaster);
+</script>
+
+
+</body>
+</html>

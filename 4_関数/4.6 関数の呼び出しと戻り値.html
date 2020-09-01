@@ -1,0 +1,51 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.6 関数呼び出しと戻り値</title>
+</head>
+
+<body>
+<!-- 2020/04/23 -->
+<h4>関数呼び出しと戻り値</h4>
+
+<script>
+    function getMaxMin(...nums){
+        return [Math.max(...nums), Math.min(...nums)];
+    }
+
+    let result = getMaxMin(10,35,-5,78,0);
+    console.log(result); //結果：[78, -5]
+
+    let[max, min] = getMaxMin(10,35, -5,78,0);
+    console.log(max);   //結果：78
+    console.log(min);   //結果：-5
+</script>
+
+<script>
+    function factorial(n){
+        if (n != 0) { return n * factorial(n-1);}
+        return 1;
+    }
+    console.log(factorial(5)); //結果：120
+</script>
+
+<script>
+    //高階関数arrayWalkを定義
+    function arrayWalk(data, f){
+        for (var key in data){
+            f(data[key], key);
+        }
+    }
+
+    //配列を処理するためのユーザー定義関数
+    function showEllement(value , key){
+        console.log(key + '：' + value);
+    }
+
+    var ary = [1, 2 , 4 , 8 , 16];
+    arrayWalk(ary, showElement);
+</script>
+
+
+</body>
+</html>

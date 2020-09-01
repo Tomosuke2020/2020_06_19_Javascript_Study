@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+    <meta charset='UTF-8'>
+    
+<title>
+    テキストを取得する／設定するの注意事項
+</title>
+</head>
+<body>
+
+<h4>テキストを取得／設定することの中でのセキュリティ上望ましくないこと
+</h4>
+
+<p><div onclick="alert('脆弱性を突いた！')">脆弱性を突いた！</div>
+</p>
+
+<form>
+    <label for='name'>名前：</label>
+    <input id = "name" name="name" type="text" size="30"/>
+    <input id = "btn" type="button" value="送信"/>
+</form>
+<div id = 'result_text'></div>
+
+<script src='JS/6-15.js'></script>
+<style>           
+    .dir{
+        color:red;
+    }
+    .dir{
+        color:aquamarine;
+    }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>バックグラウンドでJavaScriptのコードを実行する
+        -WEB Worker-
+    </title>
+    </head>
+<body>
+    <script type="text/javascript" src="JS/7-6.js"></script>
+    <script type="text/javascript" src="JS/7-7.js"></script>
+    <h4>WEB Workerを制作する。</h4>
+
+    <p>
+    JavaScriptの基本はシングルスレッドです。<br>
+    つまり、JavaScriptでは、一度に1つの作業しかできないということです。<br>
+    そのためJavaScriptでいわゆる思い処理が発生すると、ページの動作が寸断されてしまうことがありました。<br>
+    </p>
+
+    しかし、WEBWorkerという機能を利用することで、<br>
+    JavaScriptのコードをバックグラウンドで並列に実行できるようになります。<br>
+    これによって、重い処理を実行している間も、ユーザーはブラウザでの操作を継続できます。<br>
+    </p>
+
+    <p>
+        なお、「setTimeoutメソッドなどを利用すれば、同じような並列処理ができるのではないか」と思うかもしれませんが、これは誤解です。<br>
+        setTimeoutメソッドで指定された作業は、いったん脇に置かれているだけで、結局1つのスレッド上で順番に処理されているにすぎません。<br>
+        （それが先ほど「setTimeoutメソッドで指定された時間は正確ではない」述べた理由です）。<br>
+        setTimeoutメソッドで実現できるのは、あくまで類似的な並列処理であるということです。<br>
+    </p>
+
+    <h4>スレッドとは</h4>
+    <p>
+        スレッド（thread）はプログラムを実行する処理の最小単位です。英語で「糸」という意味で、<br>
+        一般的なプログラムはこのスレッド（糸）を複数より合わせて、<br>
+        一本の丈夫な紐（機能）を実現しているとイメージするとわかりやすいかもしれません。<br>
+    </p>
+
+
+    <p>
+        File.7-6.jsでファイルを実装し、以下のフォーム要素でワーカーを起動します。<br>
+    </p>
+
+    <form>
+        <input id = 'target' type = 'number' value = '1000000' />
+        以下：
+        <input id ='x' type= 'number' value = '7' />の倍数の個数 = 
+        <span id = "result"> －・－</span>
+        <input id = "btn" type = "button" value="計算"/>
+</form>
+
+        
+
+</body>
+</html>

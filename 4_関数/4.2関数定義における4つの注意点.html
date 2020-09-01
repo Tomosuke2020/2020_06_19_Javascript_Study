@@ -1,0 +1,75 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.2関数定義における4つの注意点</title>
+</head>
+
+<body>
+<!-- 2020/04/21 -->
+<h4>4.2関数定義における4つの注意点</h4>
+<p>ここまでみてきたように、JavaScriptにおける関数の定義はとてもシンプルですが、<br>
+実際にコードを書くと<br>
+思わぬ不具合に悩まされることがあります。<br>
+「；」のセミコロンは好ましいが必須ではありません。<br>
+寛容ですが、計算してくれないこともあります。<br>
+</p>
+
+<h4>return命令の直後で改行しない</h4>
+
+<script>
+    var getTraiangle = function(base, height){
+        return  //セミコロンなしと改行
+        base * height/2;
+    };
+
+    console.log('三角形の面積：' + getTraiangle(5,2));
+    //結果：面積：undefined（計算できないと値を返す）
+</script>
+
+<script>
+    var getTraiangle = function(base, height){
+        return base * height/2; //改行しない。前に置く
+    };
+
+    console.log('三角形の面積：' + getTraiangle(5,2));
+    //結果：5
+</script> 
+
+<h4>break/continue命令も途中で改行しないように</h4>
+<p>上記と同じ理由で、以下のような文でも、命令の直後で改行してはいけません。</p>
+<p><br>
+    1.ラベル付きのbreak/continue命令<br>
+    2.throw命令<br>
+    3.++、__演算子<br>
+</p>
+
+<h4>4.2.2 関数はデータ型の一種</h4>
+<script>
+    var getTraiangle = function(base, height){
+        return base * height /2;
+    };
+console.log(getTraiangle(5,2)); //結果：5
+
+getTraiangle = 0; //関数と同名の変数が定義された
+console.log(getTraiangle);
+//結果：0が出力される
+/*JavaScriptでは関数はデータ型の一種なので、
+getTraiangle関数を定義するとgetTraianglと言う変数に関数型を格納することと同じになる。
+*/
+</script>
+
+<h4>4.2.4 関数リテラル／Functionコンストラクタは実行時に評価される</h4>
+
+<script>
+console.log('三角形の面積：' + getTraiangle(5,2));
+//定義と変数が逆
+var getTraiangle = function(base , height){
+    return base * height /2;
+};//結果：getTraiangleは関数ではないとエラー
+/*関数リテラル／Functionコンストラクターは実行時に評価される*/
+</script>
+
+
+
+</body>
+</html>

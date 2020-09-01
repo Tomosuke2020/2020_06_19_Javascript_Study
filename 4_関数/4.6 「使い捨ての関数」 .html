@@ -1,0 +1,64 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.4 引数の様々な記法 </title>
+</head>
+
+<body>
+<!-- 2020/04/27 -->
+<h4>コールバック関数</h4>
+
+<script>
+    //高階関数arrayWalkを定義
+    function arrayWalk(data, f){
+        for( var key in data){
+            f(data[key], key);
+        }
+    }
+
+    //結果値を格納するためのグローバル変数
+    var result = 0;
+    function sumElement(value , key){
+        result += value;
+    }
+
+var ary = [1,2,4,8,16];
+arrayWalk(ary,sumElement);
+console.log('合計値：' + result);
+//結果：31
+</script>
+
+<p>
+    ユーザー定義関数sumElementは与えられた値Valueをグローバル変数resultに足し込んでいます。
+    <br>
+</p>
+
+<h4>
+    「使い捨ての関数」は匿名関数で
+</h4>
+
+<p>
+実は、先ほど紹介した匿名関数は、この高階関数と密接な関係を持っています。<br>
+というのも、高階関数においては、引数として与えられる関数が「その場限り」でしか利用されないことがよくあるからです。<br>
+</p>
+
+<h4>高階関数arrayWalkを定義</h4>
+
+<script>
+    function arrayWalk(data , f){
+        for(var key in data){
+            f(data[key], key);
+        }
+    }
+
+    var ary = [1,2,4,8,16];
+    arrayWalk(
+        ary,
+        function (value, key){
+            console.log(key + ':' + value);
+        }
+    );
+</script>
+
+</body>
+</html>

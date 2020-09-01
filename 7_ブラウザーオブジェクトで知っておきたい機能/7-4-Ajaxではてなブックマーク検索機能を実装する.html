@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>はてなブックマーク検索機能を実装する</title>
+    </head>
+<body>
+    <h4>はてなブックマーク機能を実装する</h4>
+
+    <p>はてなブックマークのエントリー情報（API）を利用して、<br>
+    指定されたページについたブックマーク情報をリスト表示する例です。</p>
+    
+    <p><a href='http://developper.hatena.ne.jp/ja/documents/bookmark/apis/getinfo'>はてなブックマークエントリー情報取得API</a></p>
+
+    <h4>APIのイメージ</h4>
+    <p>1.クライアント・→・→・2.リクエストを送信・→・3.自分のアプリ・→・4.WEB APIの提供者↓<br></p>
+    <p>9.クライアント・←・←・7.リクエストを送信・←・6.自分のアプリ・←・5.WEB APIの提供者<br></p>
+
+    <p>
+    (1)サーバーサイドから「はてなブックマークエントリ情報取得API」（以降「はてブAPI」）にアクセスする<br>
+    まずは、PHPスクリプトではてブAPIにアクセスするためのコードを用意します。
+    </p>
+
+    <?php
+    //出力文字コード、内部文字コードを宣言
+    mb_http_output('UTF-8');
+    mb_internal_encoding('UTF-8');
+
+    //応答のコンテンツタイプを宣言
+    header('Content-Type: application/json;charset='UTF-8');
+
+    //はてブAPIへのURLを組み立て
+    $url = 'http://b.hatena.ne.jp/entry/jsonlite/?url=' .$_GET['URL'];
+
+    //問合せ結果をそのまま出力
+    print(file_get_contents($url , false ,stream_context_create(['http' => 
+    ['header' => 'User-Agent: Mysample'])));
+    ?>
+
+    <script src="JS/.js"></script>
+</body>
+</html>

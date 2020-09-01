@@ -1,0 +1,38 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.3オブジェクトの継承 -プロトタイプチェーン-</title>
+</head>
+
+<body>
+<!-- 2020/05/11 -->
+<h4>5.3.1 プロトタイプチェーンの基礎</h4>
+
+<p>オブジェクト指向言語を理解する上で、重要な概念の一つが継承です。</p>
+<p>継承とは、元となるオブジェクトの機能を引き継いで、新たなクラスを定義する機能のことをいいます。</p>
+
+<script>
+    var Animal = function(){};
+
+    Animal.prototype = {
+        walk : function(){
+            console.log('トコトコ');
+        }
+    };
+
+    var Dog = function(){
+        Animal.call(this);
+    };
+
+    Dog.prototype = new Animal();
+    Dog.prototype.bark = function(){
+        console.log('ワンワン!');
+    }
+
+    var d = new Dog();
+    d.walk();   //結果：トコトコ！
+    d.bark();   //結果：ワンワン！
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.6全てのオブジェクトの雛形 -objectオブジェクト-</title>
+</head>
+<body>
+<!-- 2020/04/17 -->
+
+<h4>
+    オブジェクトの雛形は共通的な性質／機能を提供する役割を持っています。
+</h4>
+<p>
+    objectオブジェクトはすべての共通的な性質／機能を提供することができ、ます<br>
+</p>
+
+<h4>toString／valueOFメソッド-</h4>
+<p>
+    tostringメソッド／valueOFメソッドは、それぞれオブジェクトの内容を基本型の値に変換します。<br>
+    両者の役割はよく似ていますが、以下のような違いがあります。<br>
+</p>
+<p>
+    ・toStringメソッド・・・文字列を返す<br>
+    ・valueOfメソッド・・・文字列以外の基本型の値が返されることを「期待して」使われる<br>
+</p>
+
+<h4>
+    3.6.2オブジェクトをマージする -assignメソッド-
+</h4>
+
+<p>
+    Object.assign(target, souce, ...)
+    target:ターゲット souce:コピー元
+</p>
+<script src="js/object.js" defer></script>
+
+<h4>
+    3.6.4 オブジェクトを生成する -createメソッド-
+</h4>
+
+<h4>オブジェクトを生成する第三の手段が、Object.createメソッド</h4>
+
+<p>構文
+Object.create(proto [,propps])
+    proto:生成するオブジェクトの元となるオブジェクト
+    props:プロパティ情報
+</p>
+
+<h4>
+    3.6.4 不変オブジェクトを定義する
+</h4>
+
+<p>不変オブジェクトとは、<br>
+    最初にインスタンスを生成した後、<br>
+    一切の状態（値）を変更できないオブジェクトのことをいいます。
+</p>
+
+<script>
+
+/*不変オブジェクトを定義する（この後変更できないようにする）-List3-52-*/
+
+'use strict';
+
+var pet1 = {type: 'スノーホワイトハムスター' , name:'キラ' };
+
+//以下をそれぞれコメント解除して、動作を確認
+Object.preventExtensions(pet1);
+//Object.seal(pet1);
+//Object.freeze(pet1);
+
+//既存のプロパティ値を変更
+pet.name = '山田きら';
+//既存のプロパティを削除
+delete pet .type;
+//新規のプロパティを追加
+pet.weight = 42;
+
+</script>
+
+</body>
+</html>

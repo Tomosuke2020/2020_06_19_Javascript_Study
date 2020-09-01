@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+    <meta charset='UTF-8'>
+    
+<title>
+    属性値にテキストを取得／設定する
+</title>
+</head>
+<body>
+<h4>属性値やテキストを取得／設定する</h4>
+
+<p> 要素ノードにさえアクセスしてしまえば、属性値にアクセスするのは簡単です。<br>
+    というのも多くの属性は「要素ノードの同名のプロパティ」としてアクセスできるからです。<br>
+    例えばアンカータグのhref属性を取得／設定するには、以下のように記述します（変数linkはアンカータグを表すものとします。）
+</p>
+
+<p>
+    var url = link.href; 変数urlにリンクノードを定義する
+    link.href = "http://google.com/"; ⇦設定 
+</p>
+
+<p>
+    ※属性名とプロパティが一致しない時があります。<br>
+    CSSではclass要素で呼び出しますが、JavaScriptはclassNameで定義します。
+</p>
+
+<p class = "summary">サンプル</p> ⇦html<br>
+    node.className = "summary"; ⇦ JavaScript（DOM）<br>
+</p>
+
+<p>属性とプロパティとの名前の違いを意識したくないならば、getAttribute/setAttributeメソッドを利用してください。</p>
+
+<h4>getAttribute/setAttributeメソッド</h4>
+<p>
+    elem.getAttribute(name)
+    elem.setAttribute(name , value)
+    elem:要素オブジェクト name:属性名  value:属性値
+</p>
+
+<p>アンカータグ（変数link）のhref属性を取得／設定するならば、以下のようにします。</p>
+<p>
+    var url = link.getAttritube('href');
+    link.setAttribute('href', 'http://www.google.com/');
+</p>
+
+<p>プロパティとしてアクセスするのに比べるとやや冗長なのがデメリットである反面、以下のメリットもあります。</p>
+
+<p>・HTMLとJavaScriptpとで名前の相違を意識する必要がない<br></p>
+<p>・文字列として指定できるので、取得／設定する属性名を、スクリプトから動的に変更できる<br></p>
+
+
+<script src='JS/6-13.js'></script>
+<style>
+    .dir{
+        color:red;
+    }
+    .dir{
+        color:aquamarine;
+    }
+</style>
+
+</body>
+</html>

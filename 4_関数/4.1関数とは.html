@@ -1,0 +1,144 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.1関数とは</title>
+</head>
+<body>
+<!-- 2020/04/20 -->
+<h4>関数とは</h4>
+
+<p>関数とは、与えられた入力（パラメーター）に基づいてなんらかの処理を行い、<br>
+その結果を返す仕組みを関数といいます。<br>
+Javascriptはデフォルトでも多くの関数を提供しており、<br>
+アプリ開発者が自分で関数を定義することもできます。<br>
+</p>
+
+<p>
+このアプリ開発者が自分で関数を定義することを標準の関数と区別して、<br>
+「ユーザー定義関数」といいます。
+</p>
+
+<h4>ユーザーの定義できるものは4つある</h4>
+<p>
+    ・function命令<br>
+    ・Functionコントラクタ経由で定義する<br>
+    ・関数リテラル表現で定義する<br>
+    ・アロー関数で定義する<br>
+    </p>
+
+    <h4>4.1.1 function命令で定義する</h4>
+    <p>
+        JavaScriptで関数を定義する場合、<br>
+        function命令で定義することが最も基本的なアプローチです。<br>
+    </p>
+
+    <h4>function命令の構文</h4>
+    <p>
+    function 関数名（引数, ...）{ <br>
+        ...任意の処理... <br>
+        return 戻り値;
+    }
+</p>
+
+<h4>関数名をつける場合に気を付けること</h4>
+
+<p>
+・（単なる文字列ではなく）識別子の条件を満たす必要がある。<br>
+・「その関数がどのような処理を担っているのか」がすぐにわかるような名前をつける<br>
+・「showMessage」のように「動詞＋名詞」の形式で命名するのが一般的<br>
+</p>
+
+<p>
+    引数は関数の挙動を決めるためのパラメータです。<br>
+    呼び出しもとから指定された値を受け取るための変数を、カンマ区切りで指定します。<br>
+    仮変数ともいい、関数の内部でのみ参照できます。
+</p>
+    戻り値（返り値）は関数が処理の結果、最終的に呼び出しもとに返すための値のためです。<br>
+<p>
+<p>
+通常、関数の末尾にreturn命令を記述して指定します。
+</p>
+
+<h4>関数のイメージ</h4>
+<p>
+引数（関数が動作するための必要なパラメータ）→関数（予め決められた処理）→戻り値（関数による処理の結果） 
+</p>
+
+<h4>getTraiangle関数 <br>
+    ・引数として変数basse(底辺) <br>
+    ・height(高さ)を受け取り、<br>
+    戻り値として三角形の面積を返す関数です。</h4>
+
+<script>
+    function geTriangle(base , height){
+        return base * height / 2;
+    }
+    
+    console.log('三角形の面積：' + geTriangle(5,2));//結果：５
+</script>
+
+<script>//コード内訳
+    //functionは命令
+    function geTriangle(base , height)
+    //getTraiangleの関数。(底辺と高さ)
+    {
+        return base * height / 2;
+    }
+    console.log('三角形の面積：' + geTriangle(5,2));//結果：５
+</script>
+
+
+<h4>定義済みの関数は、以下のようにして呼び出します。</h4>
+<p>
+    関数名（[引数,...]）;
+</p>
+
+<p>引数が存在しない場合にも、<br>
+    関数の後方のまるかっこは省略できないので、<br>
+    注意してください。
+</p>
+
+<h4>4.1.2Functionコンストラクタ経由で定義する</h4>
+
+<p>JavaScriptでは組み込みオブジェクトとして<br>
+    Functionオブジェクトを用意しています。<br>
+    このfunctionオブジェクトのコンストラクタを利用して定義することもできます。
+</p>
+
+<h4>構文 Functionコンストラクター</h4>
+
+<p>
+ var 変数名 = new Function(引数 ,... ,関数の本体);
+</p>
+
+<p>
+例えば、先ほどのリスト4-01(getTraiangle関数）をfunctionコンストラクタで書き換えてみるとどうでしょう。<br>
+</p>
+
+<script>
+var getTraiangle = new Function('base', 'height', 'return base * height/2;');
+//varで変数呼び出し、Traingle
+console.log('三角形の面積：' + getTraiangle(5,2));
+</script>
+
+<p>
+リスト4-01と同じ結果を得られる
+</p>
+
+<script>
+    var getTraiangle = Function('base' , 'height' , 'return base * height/2;');
+</script>
+
+<script>
+    var getTraingle = new Function('base , height' , 'return base * height/2;');
+</script>
+
+<p>
+    ここでは、本文に文が1つしか含まれない関数を定義していますが、<br>
+    通常の関数定義と同様、セミコロン（;）で文を区切って、複数の文を含めることもできます。<br>
+    そして、「Functionコンストラクタは引数や関数本体を文字列として定義できる」という点です。<br>
+</p>
+<!-- 2020/04/20 -->
+
+</body>
+</html>

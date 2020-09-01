@@ -1,0 +1,54 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.1.4アロー関数とは</title>
+</head>
+<body>
+<!-- 2020/04/20 -->
+<h4>アロー関数で定義する</h4>
+<p>アロー関数（Arrow Function）を利用すると、関数リテラルをよりシンプルに記述することができます。
+    リスト4-05
+</p>
+
+<script>
+    let getTraiangle = (base, height) =>{
+        return base * height /2;
+    };
+    console.log('三角形の面積：' + getTraiangle(5,2));
+</script>
+
+<script>/*コード内訳
+    /*変数のletを宣言し、getTraiangleをいれる (底辺)と（高さ）
+    let getTraiangle = (base, height) =>{
+
+        //returnをいれることで関数の処理をここで終了する。関数の繰り返しをしない。
+        return base * height /2;
+    };
+    console.log('三角形の面積：' + getTraiangle(5,2));
+    */
+</script>
+<!-- 2020/04/20 --> 
+<!-- 2020/04/21 -->
+
+<script>/*
+    let getTraiangle = (base, height) =>{
+        return base * height /2;
+    };
+    console.log('三角形の面積：' + getTraiangle(5,2));
+*/
+</script>
+
+<p>面積の円を求めるgetCircle関数の例（radiusを用いる）</p>
+
+<script>
+let getCircle = radius => radius * radius * Math.PI;
+console .log('円の面積：' + getCircle());
+
+let show = () => console.log('こんにちは世界！');
+</script>//結果円の面積：NaN
+
+<p>オブジェクトリテラルを返す場合
+let fnc = () => ({ hoge:'ほげ'});</p>
+
+</body>
+</html>

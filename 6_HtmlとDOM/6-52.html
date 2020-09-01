@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+    <title>アロー関数によるthisの固定
+    </title>
+
+    <link rel="stylesheet" href="css/style6-40.css">
+    </head>
+    <body>
+    <h4>Javascriptスーパーセット</h4>
+    <p>
+        altJSは歴史が浅く、<br>
+        現在も特定の言語がデファクトスタンダードを確立しているとはいいがたい状況です。<br>
+        しかし、ここに来て、Microsoft発のaltJSであるTypeScript<a link href="https://www.typescriptlang.org/"><br>
+        （https://www.typescriptlang.org/)</a>の勢いが強く、<br>
+        他から頭一つ抜きん出ている雰囲気となっています。<br>
+        <br>
+        Type Scriptは名前の通り、静的な型システムに対応しており、<br>
+        きちんとした-一定以上の規模のアプリも開発しやすくなっています。<br>
+        また、JavaScript（ES2015） のスーパーセットとなっており、<br>
+        本来のJavaScriptコードがそのまま動作しますし、<br>
+        TypeScript構文に置き換えるのも容易です。具体的なコードを見てみましょう。
+    </p>
+
+    <script>
+    //MyAppモジュールの定義
+    module MyApp{
+        //Memberクラスの定義
+        export class Member{
+            //コンストラクター（firstName ／LastNameプロパティを準備）
+        constructor(private firstName : string,
+            private lastName: string, {}
+
+            //getNameメソッド
+            public getName() : string{
+                return this.lastName + this.firstName;
+        }
+    }
+}
+
+    let m = new myApp.Member('太郎' , '山田');
+    console.log(m.getName()); //結果： 
+</script>
+
+    <style></style>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>ラジオボタンの設定</title>
+    </head>
+<body>
+<h4>ラジオボタン／チェックボックスの値を設定する</h4>
+
+<p>「NodeListオブジェクトを取得」→forループで個々の要素にアクセス」という流れは、取得設定と同じです。<br>
+    個々の要素を取り出せたら、あとは設定したい値と同じvalue値を持つラジオボタン／チェックボックスを探し出し、<br>
+    合致した要素のcheckedプロパティをtrueに設定します。<br>
+</p>
+
+<form>
+<div>
+<p>好きな食べ物は？</p>
+<label>
+<input type="Checkbox" name='food' value='ラーメン'/>ラーメン</label>
+<label>
+    <input type="checkbox" name="food" value="餃子" />餃子</label>
+    <input id="btn" type="button" value="送信" />
+</div>
+
+
+</form>
+    <div id="result"></div>
+    <script src="JS/6-21.js"></script>
+    <style></style>
+    </body>
+</html>

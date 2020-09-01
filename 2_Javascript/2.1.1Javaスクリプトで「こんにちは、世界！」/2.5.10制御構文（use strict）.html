@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<title>2.5.10制御構文</title>
+</head>
+
+<body>
+
+<h4>危険な構文を禁止する -Strictモード- </h4>
+
+<p>
+    strictモードはinternet Explorerバージョン10以降<br>
+    でしか対応していない点に注意してください。
+</p>
+
+<script>
+    'use strict';
+    //任意のコード
+    function hoge(){
+    'use strict';
+    //関数の本体
+}
+</script>
+
+<h4>
+    外部スクリプトを非同期にロードする
+</h4>
+
+<script src="app.js" async></script>
+
+<script src="lib.js'"></script>
+
+</body>
+</html>

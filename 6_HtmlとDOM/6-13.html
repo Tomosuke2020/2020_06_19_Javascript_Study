@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+    <meta charset='UTF-8'>
+    
+<title>
+    イベントリスナー addEventListnerメソッドで宣言する
+</title>
+</head>
+<body>
+
+    <h4>addEventListnerメソッドで宣言する</h4>
+    <p>addEventListnerメソッドは<br>
+        クライアントサイドJavaスクリプトの<br>
+        世界で用いられてきた手法ですが、<br>
+        1つ問題があります。
+    <br>
+    同一の要素／同一のイベントに対して、複数のイベントハンドラーを紐つけられないという問題があります。
+    そこでやってくるのが「<strong>イベントリスナー</strong>」です
+    </p>
+    
+    <input id="btn" type="button" value="ダイアログ表示"/>
+    <!--- onclick="btn_click()"をまとめて表示できる -->
+    
+    <h4>addEventListnerメソッドの構文</h4>
+    <p>document.addEbentListner('DOMContentlLoaded' , function(){<br>
+    //ボタン（btn）クリック時に実行されるイベントリスナーを登録
+    document.getElementById('btn').addEventListener('click' , function(){
+        windouw.alert('ボタンがクリックされました。');
+    }, false);
+} , false);
+    </p>
+
+<script src='JS/6-13.js'></script>
+<style>
+    .dir{
+        color:red;
+    }
+    .dir{
+        color:aquamarine;
+    }
+</style>
+
+</body>
+</html>

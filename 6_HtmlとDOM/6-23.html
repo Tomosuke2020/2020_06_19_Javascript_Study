@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>複数選択できるリストボックスの値を取得する</title>
+    </head>
+
+<body>
+<h4>複数選択できるリストボックスの値を取得する</h4>
+
+<p>
+    複数選択できるリストボックスを走査する方法は、<br>
+    チェックボックスのそれによく似ています。<br>
+    選択ボックス（単一選択）と異なり、<br>
+    "select"要素のvalueプロパティを参照しても、<br>
+    選択された値の最初の一つしか取得できないので注意してください。<br>
+</p>
+
+<form>
+<div>
+<p>好きな食べ物は？</p>
+<label>
+<input type="Checkbox" name='food' value='ラーメン'/>ラーメン</label>
+<label>
+    <input type="checkbox" name="food" value="餃子" />餃子</label>
+    <input id="btn" type="button" value="送信" />
+</div>
+
+
+</form>
+    <div id="result"></div>
+    <script src="JS/6-21.js"></script>
+    <style></style>
+    </body>
+</html>

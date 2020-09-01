@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+    <title>イベントの伝信
+    </title>
+    <link rel="stylesheet" href="css/style6-40.css">
+    </head>
+    <body>
+    <h4>キャプチャフェーズのイベント発生元からルート要素に向かう</h4>
+    
+    <p>
+    まずキャプチャフェーズでは、最上位のWindowオブジェクトから文章ツリーを辿って、下位の要素にイベントが電信していきます。
+    パブリングフェーズは、イベントの発生元からルート要素に向かって、イベントが伝信してきます。<br>
+
+    イベントの伝信は、イベントが親ノードに伝わるさまが泡（Buble）が浮かび上がる様子に似ていることから、そのように呼ばれています。<br>
+        <br>
+        <br>
+        Window→document→html→body→divの順でイベントが発生します。
+    </p>
+
+<div id="outer">
+    <p>
+        outer要素
+    </p>
+    <a id="inner" href="http://www.google.com">inner要素</a>
+</div>
+
+    <p>ダイアログ表示→inner要素（ダイアログ）→outer要素（ダイアログ）→リンク先</p>
+
+        <script src="js/6-45.js"></script>
+        <style></style>
+    </body>
+</html>

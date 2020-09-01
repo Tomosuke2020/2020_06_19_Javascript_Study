@@ -1,0 +1,353 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.2.2数値を操作する -Numberオブジェクト-</title>
+</head>
+<body>
+<!-- 2020/04/14-->
+<h4>3.3.1 配列を操作する -Arrayオブジェクト- </h4>
+
+<p>
+    では、まずはArrayオブジェクトから考えていきます。<br>
+    Arrayオブジェクトは、配列型の値を扱うためのオブジェクトで、<br>
+    配列に対して要素の追加／削除、結合、並べ方などを行うための機能を提供します。<br>
+    Arrayオブジェクトはリテラル表現を使って記述します。 
+</p>
+
+<p>構文<br>
+    var ary =['佐藤' , '高江' , '長田'];
+</p>
+<p>
+のように生成できますが、コンストラクター経由で、以下のように生成することもできます。<br>
+</p>
+
+<script>
+    console.log('JavaScriptは前者を認識します。');
+var ary = new Array('佐藤' , '高江' ,'長田'); //指定要素で配列を生成
+var ary = new Array(); //空の配列を生成
+var ary = new Array(10); //指定サイズ
+</script>
+
+<p>しかし、コンストラクターを利用した構文は、意味的に曖昧になりやすいという問題があります。</p>
+
+<!--
+<script>
+/*    'use strict'
+    console.log('JavaScriptは10という要素を認識する' )
+var ary = new Array(-10);//range errorで出力される*/
+</script>
+-->
+
+<script>
+    var ary = [];
+</script>
+
+<p>
+    破壊的なメソッド<br>
+    破壊的なメソッドとは、その実行オブジェクトそのものに変更を及ぼすメソッドのことです、<br>
+    戻り値としても並べ替えあとの配列を返しますが、元の配列もソートされているので、注意してください。<br>
+    </p>
+
+    <h4>Arrayオブジェクトのメンバーを用いたサンプルコード List3-16</h4>
+
+<script>
+    console.log('ary1を定義し、そこで名簿を作成');
+var ary1 = ['sato' , 'Takae', 'osada' , 'Hio' , 'Saitoh' , 'sato' ];
+var ary2 = ['Yabuki' , 'Aoki', 'Moriyama', 'Yamada'];
+    console.log('ary2にも名簿を作成');
+
+console.log(ary1.length); //ary1の文字数を出力
+console.log(Array.isArray(ary1)); //Array 
+console.log(ary1.toString());   //string
+console.log(ary1.indexOf('sato')); //satoは何番目か
+console.log(ary1.lastIndexOf('sato')); //satは最後の何番目か
+
+console.log(ary1.concat(ary2));
+//ここで結果が出力される
+console.log(ary1.join('/'));
+// 結果が出力される
+console.log(ary1.splice(1));
+//結果が出力される
+console.log(ary1.splice(1,2 ,'kakeya','yamaguchi'));
+//結果が出力される
+console.log(ary1.splice(ary1));
+//結果が出力される
+console.log(ary1.splice(1,2, 'kakeya', 'yamaguchi'));
+
+//結果が出力される。
+console.log(ary1);
+
+console.log(Array.of(20,40,60));
+console.log(ary1.copyWithin(1,3,5));
+console.log(ary1);
+
+console.log(ary2.fill('suzuki',1,3));
+
+console.log(ary2);
+
+console.log(ary1.pop());
+
+console.log(ary1.push('kondo'));
+
+console.log(ary1);
+
+console.log(ary1.shift());
+
+console.log(ary1);
+
+console.log(ary1.unshift('ozawa', 'kuge'));
+console.log(ary1);
+
+console.log(ary1.reverse());
+
+console.log(ary1);
+
+console.log(ary1.sort());
+
+console.log(ary1);
+
+</script>
+
+<h4>スタックの実装</h4>
+
+<p>
+    スタックとは、後入れ先出し（LIFO：Last in first Out)、<br>
+    または先入後出し（FILO：first in last out）と呼ばれる構造です。<br>
+    操作を履歴に保存し、最後に実行した操作をまず取り出します。
+    リスト3-17</p>
+
+<script>
+    console.log('後入れ先出し↓');
+    var data = [];
+    data.push(1);
+    data.push(2);
+    data.push(3);
+    console.log(data.pop()); //結果：3↓
+    console.log(data.pop());  //結果：2
+    console.log(data.pop());    //結果：1
+</script>
+
+<h4>キュー</h4>
+<p>
+キュー（Queue）とは、先入れ先出しFIFO（First In First Out）と呼ばれるデータ構造です。
+</p>
+
+<script>
+    console.log('先入れ先出し↓');
+    var data = [];
+    data.push(1);
+    data.push(2);
+    data.push(3);
+
+    console.log(data.shift());  //結果：1
+    console.log(data.shift());  //結果：2
+    console.log(data.shift());  //結果：3
+</script>
+
+<h4>配列に複数要素を追加/置き換え/削除する</h4>
+
+<h4>spliceメソッド</h4>
+<p>
+    array.splice(index, many[,elem1[,elem2,...]])<br>
+    array:配列オブジェクト  index：要素の抽出開始位置<br>
+    many:取り出す要素数     elem1,elem2...:削除箇所に挿入する要素<br>
+</p>
+
+<script>
+    var data = ['Sato', 'Taakae','Osada','Hio', 'Saitoh'] 
+    //結果：最もシンプルな処理で出力
+    console.log(data.splice(3,2,'Yamada','Suzuki'));
+    //結果：置き換えあとの要素
+    console.log(data);
+    //結果：
+    console.log(data.splice(1,0,'Tanaka'));
+    //結果：
+    console.log(data);
+    //結果：
+</script>
+
+<h4>
+    ユーザー定義関数で独自の処理を組み込めるメソッド
+</h4>
+
+<p>Arrayオブジェクトでは、<br>
+引数に対してユーザー定義関数を<br>
+指定できるメソッドが用意されています。<br>
+</p>
+
+<h4>ユーザー定義関数で独自の処理を組み込めるメソッド</h4>
+
+<p>
+    Arrayオブジェクトでは、引数に対してユーザー定義関数を指定できるメソッドが用意されています。
+    コールバックで分類されているメソッドがそれです。
+    これらのメソッドを利用することで、メソッドの基本的な挙動に対して、アプリ独自の機能を組み込むことができます。   
+</p>
+
+<h4>ユーザー定義関数で独自の処理を組み込めるメソッド</h4>
+
+<p>
+    無名関数の理解が前提<br>
+    本項の理解には、無名関数（匿名関数）の理解が前提となります。<br>
+    まずはコードの意図だけを説明しておきます。
+</p>
+
+<p>構文 forEarchメソッド<br>
+    array.forEach(callback[.that])
+    array:配列オブジェクト
+    callback:個々の要素を処理するための関数
+    that:関数callbackの中でthis(5.1.5)が示すオブジェクト
+    List3-21
+</p>
+
+<script>
+var data = [2,3,4,5]; 
+data.forEach(function(value,index,array){
+    console.log(value * value); //結果：[4, 9, 16, 25]
+});
+</script>
+
+<h4>配列に条件に合致した要素が存在するかを確認する some メソッド -
+</h4>
+<p>
+    someメソッドは指定された関数で個々の要素を判定し、一つでも条件に合致する要素があれば、trueを返します。
+</p>
+
+<h4>someメソッド構文</h4>
+
+<p> 
+    array.some(callback[,that])<br>
+    array:配列オブジェクト<br>
+    callback:個々の要素を判定するための関数<br>
+    that:関数callbackの中でthis(5.1.5)が示すオブジェクト<br> 
+</p>
+
+<h4>リスト3-22</h4>
+<script>
+//dataの変数に数字を入れてcallback!!呼び出す
+    var data = [4,9,16,25];
+
+//結果の変数を支度、data some
+    var result = data.some(function(value, index ,array){
+        return value % 3 === 0
+    });
+    //if文で結果の出力
+    if(result){
+        console.log('3の倍数が見つかりました。');
+    }
+    //違ったらfalse処理 
+    else{
+        console.log('3の倍数が見つかりませんでした。');
+    }
+</script>
+
+
+<p>引数valueを3で徐算して、<br>
+    あまりが0の場合は3の倍数としてみなしています。<br>
+    剰余演算子「％」を利用した、<br>
+    このような判定はよく利用するものなので、<br>
+    きちんと覚えておきたいところです。<br></p>
+
+
+    <h4>配列の内容を特定の条件で絞り込む -fileterメソッド- </h4>
+<p>構文「fliterメソッド」<br>
+    array.filter(callback[,that])<br>
+    array:配列オブジェクト<br>
+    callback:個々の要素を判定するための関数<br>
+    that:関数callbackの中でthisが示すオブジェクト<br>
+</p>
+
+
+<script>
+    //dataの変数にプロパティを代入
+    var data = [4, 9,16,25];
+    //結果の処理
+    var result = data.filter(function(value, index, array){
+        return value % 2 === 1;
+    });
+   //結果を表示
+    console.log(result);
+   </script>
+
+<p>sort list3-24</p>
+
+<script>
+    var ary =[5, 25,10];
+    console.log(ary.sort());
+    console.log(ary.sort(function(x,y){
+        return x - y;
+    }));
+    //結果：[5,10,25]
+</script>
+
+<p>
+    ソートlist3-25
+</p>
+
+<script>
+    //オブジェクトを作成縦軸みたいなもの
+    var classes = ['部長','課長','主任','担当'];
+    
+    //変数menmbersにオブジェクトを配列横軸みたいなもの
+    var members =
+    [
+        { name: '鈴木清子', clazz:'主任' },
+        { name: '山口久雄', clazz:'部長' },
+        { name: '井上太郎', clazz:'担当' },
+        { name: '和田知美', clazz:'課長' },
+        { name: '小森雄太', clazz:'担当' },
+    ];
+
+    //出力：インデックスとして表示
+    console.log(members.sort(function(x,y){
+        return classes.indexOf(x.clazz) - classes.indexOf(y.clazz);
+    }))
+</script>
+
+<h4>連想配列を操作する Mapオブジェクト</h4>
+<p>
+Mapオブジェクトは、キー／値のセット。<br>
+いわゆる連想配列を管理するためのオブジェクトです。<br>
+</p>
+
+<h4>MapオブジェクトList3-26</h4>
+
+<script>
+    //Mapオブジェクトに値を追加
+    let m = new Map();
+    m.set('dog', 'ワンワン');
+    m.set('cat' , 'ニャー');
+    m.set('mouse','チュー');
+
+    console.log(m.size);
+    console.log(m.get('dog'));
+    console.log(m.has('cat'));
+
+    //キーを順に取得
+    for(let key of m.keys()){
+        console.log(key);
+    }
+
+    //値を順に取得
+    for(let value of m.values()){
+        console.log(value);
+    }
+
+    for(let [key, value]of m){
+        console.log(value);
+    }
+
+m.delete('dog');
+console.log(m.size);
+
+//全てのキー/値を破棄
+m.clear();
+console.log(m.size);
+</script>
+
+<h4>オブジェクトとリテラルの違い</h4>
+<p>Mapオブジェクトの基本的な用法を理解できたところで、そもそもオブジェクトとリテラルが異なったのか便利になったのか見てみましょう
+    </p>
+    
+
+</body>
+</html>

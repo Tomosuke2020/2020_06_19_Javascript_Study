@@ -1,0 +1,18 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.3引数 start:endに負の数を指定</title>
+</head>
+<body>
+<!-- 2020/04/13 -->
+<h4>引数 start/endに負の数を指定した場合</h4>
+<p>
+    引数 start/endに負の数を指定した場合、substringメソッドは無条件に0とみなしますが、sliceメソッドは「文字列末尾からの文字数」とみなします。
+</p>
+ <script>
+    var str ='WINGSプロジェクト';
+    console.log(str.substring(5,-2));
+    console.log(str.slice(5,-2));
+</script>
+</body>
+</html>

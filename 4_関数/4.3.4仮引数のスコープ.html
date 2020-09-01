@@ -1,0 +1,52 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.3.4 仮引数のスコープ -基本型と参照型の違いに注意する- </title>
+</head>
+
+<body>
+<!-- 2020/04/22 -->
+
+<h4>基本型と参照型の違いに注意する</h4>
+
+<p></p>
+<script>
+    //基本型 valueに10
+var value = 10;
+
+//関数でvalueを処理
+function decrementValue(value){
+    value--; //valueに1を減らす処理
+    return value;
+}//returnで終了
+
+//ローカル変数の出力
+console.log(decrementValue(100)); //結果99
+console.log(value); //global変数の出力 結果10
+
+</script>
+
+<script>
+var value = [1,2,4,8,16]; //valueにプロパティで値をいれる(grobal)
+
+function deleteElement(value){ //関数処理 ローカル
+    value.pop(); //pop。最後の要素を抜く
+    return value;
+}
+
+console.log(deleteElement(value)); //ローカルで最後の要素を削除して出力
+console.log(value); //value出力 16抜きで出力。どちらも同じ
+</script>
+
+<h4>ブロックレベルのスコープは存在しない</h4>
+
+<script>
+if(true){
+int i =5;
+}
+
+System.out.println(i); //これはJavaのコード。エラーになる。
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.2基本データを扱うためのオブジェクト</title>
+</head>
+<body>
+
+<h4>基本データを扱うためのオブジェクト</h4>
+<p>標準データを扱うためのstring/Number/Symbolオブジェクトを初め、<br>
+    標準的なデータ型との対応関係にないものの、    <br>
+    数学的な演算を行うために欠かせないMathオブジェクトについてです。<br><p>
+
+    <h4>3.2.1 文字列を操作する -Stringオブジェクト -</h4>
+    <p>
+        Stringオブジェクトは、文字列の抽出や加工、検索などを行う機能を提供します。
+        Stringオブジェクトで利用可能なモノをメンバーと呼びます。
+    </p>
+    
+    <script>
+    var str1 = 'にわにわにわにわとりがいる';
+    console.log(str1.index0f('にわ'));
+    console.log(str1.lastIndex0f('にわ'));
+    console.log(str1.index0f('にわ',3));
+    console.log(str1.lastIndex0f('わ',5));
+    console.log(str1.lastIndex0f('ガーデン'));
+    console.log(str1.startsWish('にわ'));
+    console.log(str1.endWish('にわ'));
+    console.log(str1.includes('にわ'));
+
+        var str2 = 'wingプロジェクト';
+        var str3 = '叱られて';
+        var str4='wings';
+    
+    console.log(str2.charAt(4));
+    console.log(str2.slice(5,8));
+    console.log(str2.substring(5,8));
+    console.log(str2.substr(5,3));
+    console.log(str2.split('s'));
+    console.log(str1.split('わ',3));
+    console.log(str2.charCodeAt(0));
+    console.log(Str3.codePointAt(0));
+    console.log(String.fromCodePoint(134047));
+    console.log(str2.repeat(2));
+    console.log(str4.trim());
+    console.log(str2.length);
+    </script>
+    <!-- 2020/04/10 -->
+</body>
+</html>

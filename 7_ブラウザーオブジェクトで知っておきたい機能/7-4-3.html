@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>外部で公開されているサービスにアクセスするには - クロスオリジンの制限-</title>
+    </head>
+<body>
+    <h4>外部で公開されているサービスにアクセスするには - クロスオリジンの制限-</h4>
+    <p>
+    実はbm.phpの役割は、ただはてブAPIにアクセスして、その結果をそのまま出力しているだけです。<br>
+    それであれば、「bm.htmlから直接、はてブAPIにアクセスしても良いのでは？」と思うかもしれません。
+    </p>
+
+<br>
+
+<p>
+    しかし、これは不可です。<br>
+    というのも、XMLHttpRequestオブジェクトでは、<br>
+    セキュリティ上の理由から、異なるオリジンへのアクセスを認めていないからです。<br>    
+</p>
+
+    <h4>
+        XMLベースのWebAPIを処理するには
+    </h4>
+
+    <p>
+        WEB APIがXML形式のレスポンスを返す場合には、responseTextプロパティの代わりにresponsXMLプロパティを利用してください。<br>
+
+    </p>
+
+
+
+    <php src="JS/7-4.php"></php>
+    <!--
+    <script src="JS/7-3-5.js"></script>
+        -->
+</body>
+</html>

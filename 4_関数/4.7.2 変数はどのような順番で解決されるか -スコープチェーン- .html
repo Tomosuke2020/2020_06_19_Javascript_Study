@@ -1,0 +1,47 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.7.2 変数はどのような順番で解決されるか -スコープチェーン- </title>
+</head>
+
+<body>
+<!-- 2020/04/27-->
+<h4>変数はどのような順番で解決されるか -スコープチェーン-</h4>
+<p>JavaScriptではスクリプト実行時に、内部的にGlobalオブジェクトを生成するのでした。<br>
+</p>
+
+<p>グローバルオブジェクトは基本的にプログラマーが意識することのない「グローバル変数やグローバル関数を管理するための＜便査的な＞オブジェクト」です。</p>
+
+<script>
+var y = 'Global';
+function outerFunc(){
+var y = 'Local Outer';
+
+function innerFunc(){
+    var z = 'Local Inner';
+    console.log(z); //結果：Local Innner
+    console.log(y); //結果：Local Outer
+    console.log(x); //エラーxは未定義
+    }
+    innerFunc(); //InnerFunc関数の呼び出し
+}
+outerFunc(); //outerFunc関数の呼び出し
+</script>
+
+<script>
+    function closure(init){
+        var couter = init;
+
+    return function(){
+    return ++counter;
+    }
+}
+
+    var myClosure = closure(1);
+    console.log(myClosure());
+    console.log(myClosure());
+    console.log(myClousure());
+</script>
+
+</body>
+</html>

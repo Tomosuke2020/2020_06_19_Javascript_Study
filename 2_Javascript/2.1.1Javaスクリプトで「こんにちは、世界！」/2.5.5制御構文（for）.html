@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<title>2.5.5制御構文</title>
+</head>
+
+<body>
+    <!-- date2020/04/07-->
+    <h4>指定回数だけでループを処理する -for命令-</h4>
+    <p>条件式の真偽に応じてループを制御する<br>
+        while/ do...while命令に対して、<br>
+        指定された回数だけ繰り返し処理を行うのがfor命令です。</p>
+
+    <h4>for命令の構文</h4>
+    for(初期化式; ループ継続条件式; 増減式){<br>
+    ループ内で実行する命令（群）<br>
+    }<br>
+    </p>
+
+    <!-- date2020/04/08 -->
+    <script>
+        //forを先に宣言する
+        for(var x = 8; x <10; x++)
+        //xが8の時,xが10大きければxを一つずつ足す。
+        {
+            //xの値は1を足して表示する。
+            console.log('xの値は' + x);
+        }
+    </script>
+
+    <script>
+        //無限ループに陥りやすいので避ける
+//       for(var x = 0; x < 5; x--) {...}
+//      for (;;) {...}  
+    </script>
+    
+    <h4>カンマ演算子 list 2-50</h4>
+   <p>
+        カンマ演算子を利用することで、初期化式、ループ継続条件式、<br>
+        増減式に複数の式を指定することができます。<br>
+        カンマで区切られたしきは先頭から順実行されます。<br>
+ </p>
+
+ <script>
+     //iは1 jは1 iは5より大きい場合、iとjを5ずつ足す。
+    for(var i = 1, j =1; i< 5; i++, j++){
+        //出力 ixjは、、
+        console.log('i * jは '+ i * j);
+    }
+ </script>
+
+    <h4>連想配列の要素を順に処理する。 -for ...in命令 -- list2-51</h4>
+    <p>
+        for...in 命令の構文<br>
+        for(仮変数 in 連想配列）{
+            ループ内で実行する命令（群）
+        }
+    </p>
+    <p>仮変数は連想配列（オブジェクト）のキーを一時的に格納するための変数です<br></p>
+
+<script>
+    //変数dataの中にリンゴとオレンジとバナナをオブジェクトの箱にいれる
+    var data = { apple:150, orange:100, banana: 120};
+ 
+    //forを宣言しkeyの中にいれる
+    for( var key in data){
+        
+        //出力keyの中のデータを出力
+        console.log(
+            key + '=' + data[key]);
+    }
+</script>
+
+    <h4>配列ではfor ...in 命令は利用しない</h4>
+<p>
+    構文上、配列でもfor...in命令を利用はできます。 list 2-53
+</p>
+
+<script>
+    console.log('配列でのfor');
+    var data = ['apple', 'orang', 'banana'];
+    //配列オブジェクトにhogeメソッドを追加
+    
+    Array.prototype.hoge = function() {}
+    for(var key in data){
+        console.log(data[key]);
+    }// 結果：「apple」「orange」「banana」「function(){}」を順に出力
+    </script>
+
+<h4>
+    2.5.7 配列などを順に処理をする -for ...of命令-
+</h4>
+<p>
+    配列などを順番に列挙するためのもう一つの手段、for...命令では配列だけでなく、<br>
+    Arrayライクなオブジェクトなども処理できるためです。 list 2-55<br>
+</p>
+
+<p>
+    for...of命令<br>
+    for(仮変数 of 列挙可能なオブジェクト){<br>
+    ループ内で実行する命令（群）<br>
+    }    <br>
+</p>
+
+<script>
+    console.log('for...of命令↓')
+    var data =['apple', 'orange','banana'];
+    Array.prototype.hoge = function(){}
+    for (var value of data){
+        console.log(value);
+    }   //結果：「apple」「orange」「banana」を順に出力。
+</script>
+
+<h4>
+    2.5.8 ループを途中でスキップする/中断する -break/continue命令 list2-56-
+</h4>
+<p>
+    通常、while/do...while、for、for...in、for...of命令は、<br>
+    あらかじめ決められた終了条件を満たしたタイミングでループ終了しますが、<br>
+    「特定の条件を満たした場合にループを強制的に中断したい」というケースもあります。<br>
+     そのようなケースで利用できるのがswicth/continue命令です。<br>
+</p>
+
+    <script>
+        //resultは0
+    var result = 0;
+    //iは1 iが100より大きいとiを一つずつ大きくする。
+    for (var i = 1; i <= 100; i++){
+        //resultに1を足していく
+        result += i;
+        //1000を上回る時にbreakでプログラムの動きを変える
+        if(result > 1000){break;}
+    }
+    console.log('合計値が1000を超えるのは' + i);
+    </script>
+
+<h4>break命令 list-2-57</h4>
+<br>
+<p>    一方、ループをを完全に中断してしまうのではなく、<br>
+    「現在のループだけをスキップして、<br>
+    次のループを継続して実行したいという場合には<br>
+    continue命令を使用します。<br>
+</p>
+
+<script>
+    var result = 0;
+    for(var i = 1; i < 100; i++){
+        if(i % 2 === 0){continue;}
+        result += i;
+    }
+    console.log('合計：' + result);//結果：2500
+</script>
+
+<h4>ネストされたループを一気に脱出する -ラベル構文- </h4>
+
+<p>ネストされたループの中でbreak/continue命令をしようした場合、<br>
+    デフォルトでは最も内側のループ脱出/スキップします。サンプルlist 2-58 </p>
+<script>
+    //iに1、1が10よりも大きい iを1つずつ増やす
+    for(var i =1; i< 10; i++){
+        //for入れ子。jは1 jは10より小さい jを1つずつ増やす
+        for(var j = 1; j < 10; j++){
+            //kはiかけるj
+            var k = i* j
+            //kは30より大きい場合進路変更
+            if( k > 30){
+                break;
+            }
+    //document.write(コンソールではなくhtmlに記述)
+            document.write(k + '&nbsp');
+        }
+    }
+    //最初のforから
+    document.write('<br />');
+    </script>
+
+<h4>document.writeよりもtextContent/innerHTMLを優先する</h4>
+<p>
+    document.writeはページに指定された文字列を出力するための命令です。<br>
+    「ドキュメントを全て出力した後に呼び出した場合には、<br>
+    ページがいったんクリアされてしまう」<br>
+    などいささか特殊な動きを持ったメソッドです。<br>
+    実際のアプリでは、textContent/innnerHTMLを優先して扱ってください。<br>
+</p>
+
+<h4>一度積が30を超えたら、九九表の出力そのものを停止したい場合</h4>
+<script>
+   //kukuを定義
+   kuku:
+    for(var i = 1; i< 10; i++){ //varを1と定義 iが10未満で iを一つずつ足す
+        for(var j = 1; j<10; j++){ //jは1 jを10以上 jを一つずつ足す
+            
+            var k = i* j //iにkをかける。途中の処理でhtmlに記述
+            if(k > 30) {break kuku;}
+            document.write(k + '&nbsp');
+        }
+        //入れ子以外をhtmlに記述
+        document.write('<br />');
+        }//結果：九九の計算30まで
+</script>
+<!-- 2020/04/09 -->
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.1.5 文脈によって中身が変化する変数 thisキーワード</title>
+</head>
+
+<body>
+<!-- 2020/05/07 -->
+
+<p>call/applyメソッド</p>
+<p>
+func.call(that [,arg1 [,arg2[,...]]])
+    func.apply(that [,args])
+    func:関数オブジェクト         that:関数の中でthisキーワードが示すもの
+    arg1, arg2...:関数に渡す引数  args:関数に引数（配列）
+</p>
+
+<script>
+    var data = 'Global data';
+    var obj1 = { data: 'obj1 data'};
+    var obj2 = { data: 'obj2 data'};
+
+    function hoge(){
+        console.log(this.data);
+    }
+
+    hoge.call(null);    //結果：Global data
+    hoge.call(obj1);    //結果：obj1 data
+    hoge.call(obj2);    //結果：obj2 data
+</script>
+
+<p>
+    引数thatにそれぞれ異なるオブジェクトを渡すことで、<br>
+    hoge関数配下のthisの内容（ここでは出力されるthis.dataの値）<br>
+    が変化していることを確認できます。
+</p>
+
+<p>
+    function hoge(){
+    var args = Array.prototype.slice.call(arguments);
+    console.log(args.join('／'));
+    }
+
+    hoge('Angular' , 'React' , 'Backbone');
+</p>
+
+<script>
+    function hoge(){
+    var args = Array.prototype.slice.call(arguments);
+    console.log(args.join('／'));
+    }
+    hoge('Angular' , 'React' , 'Backbone');
+</script>
+
+<script>
+    let args = Array.from(arguments);
+</script>
+
+<h4>5.1.6 コンストラクターの強制的な呼び出し</h4>
+
+<p>JavaScriptの世界では、<br>
+    関数がコンストラクターとしての役割をになっていることから、<br>
+    問題もあります。</p>
+
+<script>
+ var Member = function(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+};
+
+var m = Member('権兵衛' , '佐藤');
+console.log(m);
+console.log(firstName);
+console.log(m.firstName);
+</script>
+<!-- 2020/05/07 -->
+
+
+</body>
+</html>

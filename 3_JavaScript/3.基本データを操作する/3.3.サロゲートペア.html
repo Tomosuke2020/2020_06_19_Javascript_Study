@@ -1,0 +1,23 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.3サロゲートペア</title>
+</head>
+<body>
+<!-- 2020/04/13 -->
+<h4>サロゲートペア文字の長さをカウントする</h4>
+<script>
+    var msg ='叱る';
+    console.log(msg.length);//結果：2
+</script>
+
+<h4>サロゲートペア list3-07</h4>
+<script>
+    var msg ='叱る';
+    var len = msg.length;
+    var num = msg.split(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g).length - 1;
+    console.log(msg.length - num);
+</script>
+
+</body>
+</html>

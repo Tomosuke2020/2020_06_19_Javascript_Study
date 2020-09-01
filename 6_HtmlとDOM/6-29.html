@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>要素／テキストノードを作成する</title>
+    </head>
+    <body>
+
+<h4>innerHTMLプロパティとどのように使い分けるか</h4>
+    <p>
+    HTMLの編集には、先述したinnerHTMLプロパティを利用することができます。<br>
+    しかし、innerHTMLプロパティでは、<br>
+    コンテンツを文字列として操作する必要があるため、<br>
+    以下のような問題があります。<br>
+    </p>
+
+    <p>HTMLの編集には、先述したinnerHTMLプロパティを利用することもできます。<br>
+    しかし、innerHTMLプロパティでは、コンテンツを文字列として操作する必要があるため、<br>
+    以下のような問題があります。
+    </p>
+
+    <p>・コンテンツが複雑になった場合に、コードの見通しが悪くなる</p>
+    <p>・ユーザーからの入力値に基づいてコンテンツを作成した場合、任意のスクリプトを実行されてしまう可能性がある。</p>
+    
+    <p>
+    反面、ちょっとしたコンテンツを埋め込むにも、<br>
+    オブジェクトによる操作が必要になるので、<br>
+    コードは冗長になりがちです。
+    </p>
+
+<form>
+<div>
+    <label for="name">サイト名：</label><br />
+    <input id="name" name="name" type="text" size="30" />
+</div>
+    <div>
+    <label for="url">URL：</label><br/>
+    <input id="url" name="url" type="url" size="50" />
+    </div>
+
+    <div>
+        <input id = "btn" type="button" value="追加" />
+    </div>
+
+    </form>
+
+    <div id="list"></div>
+        <script src="js/6-29.js"></script>
+        <style></style>
+    </body>
+</html>

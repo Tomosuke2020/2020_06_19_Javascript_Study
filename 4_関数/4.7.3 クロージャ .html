@@ -1,0 +1,27 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.7.3 クロージャ </title>
+</head>
+
+<body>
+<!-- 2020/04/28-->
+<h4>クロージャ</h4>
+
+<script>
+function closure(init){
+var counter = init;
+
+return function(){
+return ++counter;
+}
+}
+
+var myClosure = closure(1);
+console.log(myClosure()); //結果：2
+console.log(myClosure()); //結果：3
+console.log(myClosure()); //結果：4
+</script>
+
+</body>
+</html>

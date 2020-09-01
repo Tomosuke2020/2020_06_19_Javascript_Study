@@ -1,0 +1,80 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>3.2.2数値を操作する -Numberオブジェクト-</title>
+</head>
+<body>
+<!-- 2020/04/13 -->
+<p>
+    Symbol([desc])
+    desc:シンボルの説明
+    </p>
+<script>
+    let sym1 = Symbol('sym');
+    let sym2 = Symbol('sym');
+
+    console.log(typeof sym1);//結果：symbol
+    console.log(sym1.toString());//結果：Symbol(sym)
+    console.log(sym1 === sym2); //結果：false
+</script>
+
+<h4>シンボルを定数の値として利用する</h4>
+
+<script>
+    const MONDAY = 0;
+    const TUESDAY = 1;
+    const WENDDAY = 2;
+    const THURSDAY = 3;
+    const FRIDAY = 4;
+    const SATURDAY = 5;
+    const SUNDAY = 6;
+    
+</script>
+<!-- 2020/04/13 -->
+
+<h4>Mathオブジェクト</h4>
+<p>MathプロパティはJavaScriptで静的に数字的演算をすることができます。</p>
+
+<p>
+    Mathプロパティのの構文<br>
+    Math.プロパティ<br>
+    Math.メソッド名（引数,...）
+</p>
+
+<p>Mathオブジェクトの主なメンバを利用したサンプルList3-15</p>
+
+<script>
+console.log(Math.abs(-100));
+console.log(Math.clz32(1));
+console.log(Math.min(20,40,60));
+console.log(Math.max(20,40,60));
+console.log(Math.pow(5,3));
+console.log(Math.random());
+console.log(Math.sign(-100));
+console.log(Math.ceil(1234.56));
+console.log(Math.ceil(-1234.56));
+console.log(Math.floor(1234.56));
+console.log(Math.floor(-1234.56));
+console.log(Math.round(1234.56));
+console.log(Math.round(-1234.56));
+console.log(Math.trunc(1234.56));
+console.log(Math.trunc(-1234.56));
+console.log(Math.sqrt(1234.56));
+console.log(Math.cbrt(1234.56));
+console.log(Math.hypot(1234.56));
+console.log(Math.cos(1));
+console.log(Math.sin(1));
+console.log(Math.tan(1));
+console.log(Math.atan2(1,3));
+console.log(Math.log(10));
+console.log(Math.exp(3));
+console.log(Math.expm1(1));
+</script>
+<p>
+    var m =new Math //これはエラーになる
+</p>
+
+<!-- 2020/04/14 -->
+
+</body>
+</html>

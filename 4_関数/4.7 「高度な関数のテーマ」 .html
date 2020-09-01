@@ -1,0 +1,59 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.7 高度な関数のテーマ </title>
+</head>
+
+<body>
+<!-- 2020/04/27-->
+<h4>高度な関数のテーマ</h4>
+
+<p>
+    JavaScriptの関数は実は奥深い世界です。
+    関数をいかに極めるかが、JavaScriptの「極みの道」と言えます。
+</p>
+
+<h4>4.7.1 テンプレート文字列をアプリ仕様にカスタマイズする</h4>
+
+<script>//与えられた文字列をエスケープ処理
+function escapeHtml(str){
+    if(!str){ return '';}
+    str = str.replace(/&/g, '&amp;');
+    str = str.replace(/</g, '&lt;');
+    str = str.replace(/>/g , '&gt;');
+    str = str.replace(/"/g, '&quot;');
+    str = str.replace(/"/g, '&quot;');
+    str = str.replace(/'/g, '&#39;');
+    return str;
+}
+
+//分解されたtemplatesとvaluesを順に連結（valuesはescapeHtml関数でエスケープ）
+function e(templates, ...values){
+    let result = '';
+    for (let i = 0,len = templates.length; i < len; i++){
+        result += templates[i] + escapeHtml(values[i]);
+    }
+    return result;
+}
+
+//テンプレート文字列をエスケープ処理
+let name ='<"Mario" & \'Luigi\'>';
+console.log(e`こんにちは、${name}さん！`);
+
+//結果：こんにちは＿＿さん。
+</script>
+
+<p>
+タグ付きテンプレート文字列は、単なる関数呼び出しにすぎません。<br>
+1のように、「関数名`テンプレート文字列`」の形式で表現できます。<br>
+</p>
+
+<p>
+・引数として「テンプレート文字列（分解したもの）」とvalues（埋め込み変数）を受け取ること<br>
+・戻り値として加工済みの文字列を返すこと<br>
+<br>
+これらがテンプレート文字列の移動です。
+</p>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>5.0JavaScriptにおけるオブジェクト指向 </title>
+</head>
+
+<body>
+<!-- 2020/04/28-->
+
+<h4>プロトタイプオブジェクトを利用することの二つの利点</h4>
+
+<p>・メモリの使用料を節減できる。<br></p>
+<p>・メンバーの追加や変更をインスタンスがリアルタイムに認識できる<br></p>
+
+<script>
+    var Member = function(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    var mem = new Member('太郎' , '山田');
+
+    //インスタンス化の後にメソッドを追加
+    Member.prototype.getName = function(){
+        return this.lastName + '' + this.firstName;
+    };
+    console.log(mem.getName());
+</script>
+</body>
+</html>

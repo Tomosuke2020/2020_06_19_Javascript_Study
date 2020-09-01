@@ -1,0 +1,30 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.3.3 ローカル変数の有効範囲はどこまで？</title>
+</head>
+
+<body>
+<!-- 2020/04/22 -->
+<h4>4.3.3 ローカル変数の有効範囲はどこまで？</h4>
+<p>ローカル変数は「宣言された関数の中でのみ有効な変数」と述べましたが、<br>
+    より厳密には「宣言された関数」</p>
+
+<script>
+var scope = 'Grobal Variable';
+
+function getValue(){
+    console.log(scope); //結果：undefind（未定義）
+    var scope = 'Local Variable'; 
+    return scope;
+}
+
+console.log(getValue());
+console.log(scope);
+</script>
+
+<p>ローカル変数は関数の先頭で宣言する</p>
+
+
+</body>
+</html>

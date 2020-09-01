@@ -1,0 +1,78 @@
+<html lang=ja>
+<head>
+<meta charset='UTF-8'>
+<title>4.4 引数の様々な記法 </title>
+</head>
+
+<body>
+<!-- 2020/04/22 -->
+<h4>引数のさまざまな記法</h4>
+
+<p>showMessageは引数を一つ受け取る</p>
+<script>
+    function showMessage(value){
+        console.log(value);
+    }
+
+    showMessage();
+    showMessage('山田'); //show~は一つなので「結果２山田」を出力
+    showMessage('山田','鈴木');//その他は受け取るが、無視される
+</script>
+
+<h4>argumentsオブジェクト</h4>
+<script>
+    function showMessage(value){
+        if(arguments.length !== 1){
+            throw new Error('引数の数が間違っています：' + arguments.length);
+        }
+        console.log(value);
+    }
+
+try{
+    showMessage('山田','鈴木'); 
+} catch(e){
+    window.alert(e.message);
+}
+</script>
+
+<h4>4.4.4 名前付き引数でコードを読みやすくする</h4>
+
+<script>
+getTriangle({base:5,height:4})
+</script>
+
+<p>名前付き引数とは呼び出した時に名前を明示的に指定できる引数のことです。</p>
+
+<p>名前付き引数を用いることで、以下のようなメリットがあります。<br>
+    ・引数が多くなっても、コードの意味がわかりやすい<br>
+    ・省略可能な引数をスマートに表現できる<br>
+    ・引数の順番を自由に変更できる<br>
+</p>
+
+<h4>記述例：引数単体なので結果はエラーになるが、こういった記述ができる</h4>
+<script>
+    //記述例：引数単体なので結果はエラーになるが、こういった記述もできる
+    
+    getTriangle({ height:4 })//前方の引数だけを省略した
+    getTriangle({ height4 , basae:5})//引数の順番を変更した
+</script>
+
+<h4>引数のサンプルコード</h4>
+
+<script>
+/*function(関数) getTriangle(引数)(args)(仮引数:オブジェクトリテラル)*/
+function getTriangle(args){
+    //if(args)(仮引数)()
+    
+    if(args.base === undefined){ args.base = 1;}
+    if(args.height === undefined){ a
+    
+    
+    rgs.height = 1;}
+    return args.base * args.height /2;
+}
+
+console.log(getTriangle({ base:5, height:4})); //結果：10
+</script>
+</body>
+</html>

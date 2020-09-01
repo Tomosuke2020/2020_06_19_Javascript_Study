@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<title>JavaScriptの読み込み方です。</title>
+</head>
+
+<body>
+    <h4>html要素でスクリプトを読み込んでいます。</h4>
+        <p>html段階では、<br>
+        scriptの記述を続けていくと処理に追われ<br>
+        表示が遅くなる可能性があります。<br>
+        そこで同期と非同期させることによって、<br>
+        読み込み処理を目立たなくすることができます。<br>
+    </p>
+
+    <script>
+    console.log('htmlのscript要素で記述しています。')
+    </script>
+
+    <h4>外部スクリプトを非同期にロードする。</h4>
+    <p>ファイル読み込み方法に.jsファイルを用います。<br>
+       非同期していくので処理に負担をかけにくいのが特徴です。<br>
+    </p>
+
+    <h4>スクリプトの読み込み</h4>
+    <p>async</p>
+    <script src="js/yomikomi.js" async></script>
+    
+    <h4>順延してくれるのでちゃんと順序を記述できるdefer</h4>
+    <p>defer</p>
+    <script src="js/yomikomi2.js" defer></script>
+    <script src="js/yomikomi3.js" defer></script>
+
+    <h4>asyncでの順序をテストしています。</h4>
+    <script src = "js/yomikomi4-2.js" async></script>
+    <script src = "js/yomikomi4-1.js" async></script>
+    
+
+</body>
+</html>

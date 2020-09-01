@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<title>2.4.4論理演算子</title>
+</head>
+
+<body>
+    <!-- date 2020/04/06 -->
+<h4>2.4.4論理演算子 list.2-30</h4>
+<p>複数の条件式（または論理値）を合理的に結合し、
+    その結果をtrue/falseとして返します。
+    通常、前項の比較演算子と組み合わせて利用することで、
+    より複雑な条件式を表現することができます。
+    <br>
+    演算子
+    <br>
+    &&・・・左右の色が共にtrueの場合はtrue 
+    <br>
+    ||・・・左右の色がどちらかがtrueの場合はtrue
+    <br>
+    !・・・式がfalseの場合はtrue
+    <br>
+    論理演算子の評価結果は、左式／右式の値と具体的な
+    結果の対応表を覗いてください。
+    <img src="ronnri.png"  width='500' height= '500'>
+<br>
+    なおJavaScriptは
+    
+    ・空文字列（''）
+    <br>
+    ・数値の0、NaN（Not a Number）
+    <br>
+    ・null、undefined
+    <br>
+    上記以外の値が全てtrueとみなされます。
+</p>
+
+<script>
+    var x = 1;
+    var y = 2;
+    console.log(x === 1 && y === 1);//結果：false
+    console.log(x === 1 || y +++ 1); //結果：true
+</script>
+
+<h4>ショートカット演算子（短絡演算）list2-31</h4>
+    <p>論理積／論理和演算子を利用する場合、
+    「左式だけが評価されて右式が評価されないケース」
+    も注意しておかなければなりません。
+    </p>
+
+    <script>
+        if(x === 1){ console.log('こんにちは');}
+        x === 1 && console.log('こんにちは');
+    </script>
+
+<h4>
+ショートカット演算子の使い所
+</h4>
+
+<p>ショートカット演算子はこういったところで使ってみましょう。</p>
+
+<script>
+    //varのmsgに文字列
+    var msg ='';
+
+    //msgに文字列をいれる||で左式を用いている
+    msg = msg || 'こんにちは世界！';
+    console.log(msg); //結果：こんにちは世界！
+</script>
+
+<h4>2.4.5 ビット演算子</h4>
+
+<p>ビット演算子は整数値を2進数で表した場合の各桁に対して
+    （ビット単位に）、論理計算を行う演算のことをいいます。
+    ビット演算子は、さらに『ビット論理演算子』
+    と『ビットシフト演算子』の2つに大別できます。
+</p>
+
+<h4>その他演算子</h4>
+
+<p>
+    カテゴリに分類できない演算子です。
+</p>
+
+<h4>delete演算子</h4>
+<p>削除に成功した場合true 失敗した場合falseを返す</p>
+<script>
+    console.log('↓delete演算子')
+
+    //aryの変数に3つの単語をいれる
+    var ary = ['apple','souse','mouse'];
+    //コンソールでの削除結果を出力する
+    console.log(delete ary[0]); //結果：true
+    console.log(ary) //結果：[1:"Ajax", 2: "ASP.NET"]
+    //左から消されていく
+
+
+    console.log('2');
+    //obj変数のx1とy2
+    var obj ={x:1, y:2}; //結果：true
+    console.log(obj.x); //結果：undefind
+
+    console.log('3');
+    //xのobjとyの2
+    var obj2 = {x:obj, y:2};    
+    console.log(delete obj2.x); //結果：true
+    console.log(obj);   //結果：{y : 2}
+
+    console.log('4');
+    //
+    var data1 = 1;
+    console.log(delete detail); //deleteとディテイル
+    console.log(data1); //結果：1
+
+    console.log('5');
+    data2 = 10;
+    console.log(delete data2);
+    console.log(data2); //エラー（data2は存在しない）
+
+</script>
+
+<h4>typeof演算子 list2-34</h4>
+<p>
+    typeof演算子はオペランドに指定した、
+    変数／リテラルのデータ型を表す文字列を返します。
+    早速具体的な例をみてみましょう
+</p>
+
+<script>
+    var num = 1;
+    console.log(typeof num); //結果：number
+
+    var str = 'こんにちは';
+    console.log(typeof str); //結果：string
+
+    var flag = true;
+    console.log(typeof flag);   //結果：boolean
+
+    var ary = ['Javascript', 'Ajax' , 'ASP.NET'];
+    console.log(typeof ary); //結果：object
+
+    var obj = {x:1 , y:2};
+    console.log(typeof obj); //結果：object
+</script>
+
+<h4>
+    2.4.7 演算子の優先順位と結合則
+</h4>
+
+<p>優先順位
+    JavaScriptは演算子に優先順位を持っています。
+    配列 > シフト > 比較 > 条件 > カンマの順に優先順位を持っています。
+</p>
+
+<script>
+   var m = 3 * 5 + 2* 2;
+    console.log(m);
+
+    var o = (3*5) + (2 *2);
+    console.log(o);
+</script>
+<!-- date 2020/04/06 -->
+
+</body>
+</html>
